@@ -47,6 +47,7 @@ import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
  */
 public class AddCarActivity extends AppActivity implements View.OnClickListener{
 
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
