@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <car.com.wlc.cardemo.view.MovingImageView
+        android:id="@+id/move_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/login"
+        app:miv_load_on_create="true"
+        app:miv_max_relative_size="3.0"
+        app:miv_min_relative_offset="0.2"
+        app:miv_repetitions="-1"
+        app:miv_speed="50"
+        app:miv_start_delay="0" />
+
+    <LinearLayout
+       android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@drawable/reg_background"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/cxz_login_name"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:text="|"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <EditText
+                style="@style/editStyle"
+
+                android:hint="请输入用户名"
+                android:id="@+id/name_edit"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/reg_background"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/cxz_login_password"/>
+            <TextView
+                android:text="|"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <EditText
+                style="@style/editStyle"
+                android:password="true"
+                android:hint="请输入密码"
+                android:id="@+id/password_edit"
+                 />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:textSize="20sp"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:background="@drawable/login_btn"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+         />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+               android:layout_centerInParent="true"
+                android:id="@+id/findpassword"
+                android:layout_alignParentRight="true"
+                android:textColor="@android:color/white"
+                android:text="找回密码"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+
+                android:id="@+id/reg_btn"
+                android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+                android:layout_margin="8dp"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册"/>
+        </RelativeLayout>
+        <include
+
+            android:id="@+id/login_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/layout_progress"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+</FrameLayout>

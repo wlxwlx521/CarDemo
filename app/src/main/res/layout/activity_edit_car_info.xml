@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_car_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.EditCarInfoActivity">
+<include
+    layout="@layout/title_layout"/>
+    <include layout="@layout/view_layout"/>
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="@drawable/set_background"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车牌号" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+                    style="@style/editLayout">
+                <EditText
+                    android:id="@+id/edit_lnpo"
+                    style="@style/EditInfoStyle"
+                    />
+                    </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆别名" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+                    style="@style/editLayout">
+                    <EditText
+                        android:id="@+id/edit_idName"
+                        style="@style/EditInfoStyle"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="品牌"
+                    android:id="@+id/textView7" />
+
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                   android:id="@+id/name_layout"
+                    style="@style/editLayout">
+                    <TextView
+                        android:id="@+id/edit_name"
+                        android:layout_marginLeft="0dp"
+                        style="@style/textCarStyle"
+                        android:hint="未设置"
+                        />
+                    <ImageView
+                        style="@style/imageMoreStyle">
+                    </ImageView>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                   android:id="@+id/brand_layout"
+                    style="@style/editLayout">
+                    <TextView
+                        android:id="@+id/edit_brand"
+                        android:layout_marginLeft="0dp"
+                        style="@style/textCarStyle"
+                        android:hint="未设置"
+                        />
+
+                    <ImageView
+                        style="@style/imageMoreStyle">
+                    </ImageView>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车款"
+                    android:id="@+id/textView6" />
+
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                android:id="@+id/type_layout"
+                    style="@style/editLayout">
+                    <TextView
+                        android:id="@+id/edit_product"
+                        android:layout_marginLeft="0dp"
+                        style="@style/textCarStyle"
+                        android:hint="未设置"
+                        />
+                    <ImageView
+                        style="@style/imageMoreStyle"
+                        >
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="颜色"
+                    android:id="@+id/textView8" />
+
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                    <LinearLayout
+                        style="@style/editLayout">
+                    <EditText
+                        android:id="@+id/edit_color"
+                        style="@style/EditInfoStyle"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="发动机排量" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                    android:id="@+id/displace_layout"
+                    style="@style/editLayout">
+                <TextView
+                    android:id="@+id/edit_displace"
+                    style="@style/EditInfoStyle"
+                    />
+
+                    </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="燃油类型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                  android:id="@+id/fuetype_layout"
+                    style="@style/editLayout">
+                <TextView
+                    android:hint="未设置"
+                    android:layout_marginLeft="0dp"
+                    android:id="@+id/edit_fuestyle"
+                    style="@style/textCarStyle" />
+
+                    </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="变速箱类型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                   android:id="@+id/tra_layout"
+                    style="@style/editLayout">
+                <TextView
+                    android:id="@+id/edit_tra"
+                    android:hint="未设置"
+                   android:layout_marginLeft="0dp"
+                    style="@style/textCarStyle"
+                    />
+                    </RelativeLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="排放标准" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                   android:id="@+id/emissionStd_layout"
+                    style="@style/editLayout">
+                <TextView
+                    android:id="@+id/edit_emissionStd"
+                    style="@style/EditInfoStyle"
+                    />
+                    <ImageView
+                        style="@style/imageMoreStyle">
+                    </ImageView>
+                    </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="登记车型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                    android:id="@+id/registstype_layout"
+                    style="@style/editLayout">
+
+                    <TextView
+                        android:id="@+id/edit_registstype"
+                        style="@style/EditInfoStyle"
+                        />
+                    <ImageView
+                        style="@style/imageMoreStyle">
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆所有者姓名" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+
+                    style="@style/editLayout">
+                <EditText
+                    android:id="@+id/edit_owner"
+                    style="@style/EditInfoStyle"
+                    />
+                    </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆所有者电话" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+
+                    style="@style/editLayout">
+                <EditText
+                    android:id="@+id/edit_ownerphone"
+                    style="@style/EditInfoStyle"
+                    />
+                    </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="生产时间" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+
+                    style="@style/editLayout">
+                    <TextView
+                        android:id="@+id/edit_produceTime"
+                        android:layout_marginLeft="0dp"
+                        android:text="未设置"
+                        android:layout_width="match_parent"
+                        style="@style/textCarStyle"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆服务属性" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                    android:id="@+id/service_layout"
+                style="@style/editLayout">
+                    <TextView
+                        android:layout_marginLeft="0dp"
+                        android:hint="未设置"
+                        style="@style/textCarStyle"
+                        android:layout_width="match_parent"
+                        android:id="@+id/edit_service" />
+                    <ImageView
+                        style="@style/imageMoreStyle">
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆上牌时间" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+                    style="@style/editLayout">
+                    <TextView
+                        android:hint="未设置"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="0dp"
+                        android:id="@+id/edit_registtime"
+                        style="@style/textCarStyle"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="登记的交管所" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+                    style="@style/editLayout">
+                    <EditText
+                        android:id="@+id/edit_registagency"
+                        style="@style/EditInfoStyle"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="当前里程" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <LinearLayout
+                    style="@style/editLayout">
+                    <EditText
+                        android:id="@+id/edit_current_km"
+                        style="@style/EditInfoStyle"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车架号" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:visibility="invisible"
+                    android:layout_marginLeft="0dp"
+                    style="@style/baiozhiStyle" />
+                <RelativeLayout
+                    style="@style/editLayout">
+                    <EditText
+                        android:id="@+id/edit_vin"
+                        style="@style/EditInfoStyle"
+                        />
+                    <ImageView
+                        android:src="@mipmap/qr_code"
+                        android:id="@+id/edit_scan"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,113 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="car.com.wlc.cardemo.fragment.MyCarFragment">
+
+   <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.amap.api.maps.MapView>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@android:color/white"
+            android:id="@+id/my_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:checked="false"
+                android:id="@+id/mycar_check"
+                android:layout_marginLeft="10dp"
+                android:button="@null"
+                android:drawableLeft="@mipmap/cxz_common_multicar"
+                android:drawablePadding="15dp"
+                android:text="我的车辆"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_below="@id/my_linear"
+            android:background="@color/btnChooseColor"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/my_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_linear"
+            android:background="#999">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mycar_recyler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/mycar_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/my_choose"
+            android:src="@mipmap/cxz_mycar_menu_real_time_condition" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/set_background">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/cxz_common_nav"
+                android:gravity="center"
+                android:text="车位导航"
+                android:textColor="#5CA946" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorTextde" />
+
+            <TextView
+                android:id="@+id/mycar_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+
+                android:text="上海大众" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/colorTextde" />
+
+            <Button
+                android:background="@android:color/white"
+                android:id="@+id/record_car"
+                android:layout_marginBottom="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/cxz_common_travel"
+                android:gravity="center"
+                android:text="行车记录"
+                android:textColor="#5CA946" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

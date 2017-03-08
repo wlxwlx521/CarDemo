@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_record_car"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="car.com.wlc.cardemo.activity.RecordCarActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/view_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_car_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/cxz_common_location_car" />
+
+        <TextView
+            android:id="@+id/car_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/image_car_logo"
+            android:gravity="center"
+            android:text="MerLin" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/iapppay_title_button_back" />
+    </RelativeLayout>
+<include layout="@layout/view_layout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/set_background"
+            android:id="@+id/text_dateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="5dp">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="40dp">
+                <TextView
+                    android:id="@+id/date_dec"
+                    android:textSize="20sp"
+                    android:text="---"
+                    android:textColor="@color/textcolor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <include layout="@layout/view_cop_layout"/>
+
+            <TextView
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="2017-1-17"
+                android:id="@+id/text_date"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="40dp" />
+            <include layout="@layout/view_cop_layout"/>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="40dp">
+                <TextView
+                    android:id="@+id/date_add"
+                    android:textSize="20sp"
+                    android:text="+"
+                    android:textColor="@color/textcolor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/set_background"
+           android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/text_dateLayout">
+            <TextView
+                android:gravity="center"
+                android:text="00:00"
+                android:id="@+id/btn_start"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
+                android:layout_height="40dp" />
+            <include layout="@layout/view_cop_layout"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_weight="1.8"
+                android:layout_height="match_parent">
+                <include layout="@layout/point_layout"/>
+                <include layout="@layout/point_layout"/>
+                <include layout="@layout/point_layout"/>
+                <include layout="@layout/point_layout"/>
+                <include layout="@layout/point_layout"/>
+                <include layout="@layout/point_layout"/>
+            </LinearLayout>
+            <include layout="@layout/view_cop_layout"/>
+            <TextView
+                android:text="23:00"
+                android:gravity="center"
+                android:id="@+id/btn_end"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
+                android:layout_height="40dp" />
+            <include layout="@layout/view_cop_layout"/>
+            <TextView
+                android:gravity="center"
+                android:text="重置"
+                android:id="@+id/btn_reset"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+<include
+    android:id="@+id/progress_layout"
+    layout="@layout/layout_progress"/>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text_isshow"
+                android:gravity="center"
+                android:visibility="gone"
+               android:layout_gravity="center"
+                android:text="此段时间为查询到车辆轨迹"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ListView
+
+            android:scrollbars="none"
+            android:id="@+id/mycar_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/time_layout">
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

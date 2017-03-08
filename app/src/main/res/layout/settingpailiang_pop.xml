@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/diapass_layout"
+        android:layout_marginTop="10dp"
+
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:focusable="true"
+                android:id="@+id/edit_pailiang"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:background="@drawable/set_background"
+                android:hint="请输入自定义排量"
+                style="@style/editStyle" />
+            <TextView
+                android:id="@+id/text_iswoluan"
+                android:text="L"
+                android:textColor="@color/cityColor"
+                android:textSize="20sp"
+                android:layout_marginLeft="8dp"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/edit_pailiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/cityColor"
+                android:textSize="20sp"
+                android:text="是否具有涡轮增压(T)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/cb_isware"
+                android:layout_marginLeft="8dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btn_sure"
+                android:textSize="20sp"
+                android:layout_margin="5dp"
+                android:text="确定"
+                android:layout_gravity="center|left"
+                android:textColor="@color/whiteColor"
+                android:background="@color/btnFalseColor"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
+            <Button
+                android:id="@+id/btn_cancle"
+                android:textSize="20sp"
+                android:textColor="@color/whiteColor"
+                android:layout_margin="5dp"
+                android:background="@color/btnFalseColor"
+                android:text="取消"
+                android:layout_gravity="center|right"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:id="@+id/trasmiss_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/text_stype"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:background="@color/btnFalseColor"
+
+            android:textColor="@color/whiteColor"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <ListView
+            android:scrollbars="none"
+            android:id="@+id/trasmiss_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

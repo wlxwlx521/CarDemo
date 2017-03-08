@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_layout"/>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <ImageView
+                    android:id="@+id/left_des"
+                   android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/em_mm_title_back"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@mipmap/cxz_common_location_car"
+                        android:id="@+id/image_mycar_picture"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:id="@+id/text_lnpo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="name"
+                        android:textColor="@color/font_text"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/right_add"
+                  android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/em_mm_title_right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:id="@+id/info_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:textSize="18sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="基本信息"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/em_mm_title_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                    <include layout="@layout/view_layout"/>
+                    <RelativeLayout
+                        android:id="@+id/sell_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:textSize="18sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="销售信息"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+
+                            android:layout_marginRight="10dp"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/em_mm_title_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                    <include layout="@layout/view_layout"/>
+                    <RelativeLayout
+                        android:id="@+id/insur_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerInParent="true"
+                            android:text="保险信息"
+                            android:textSize="18sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <ImageView
+                            android:layout_marginRight="10dp"
+                            android:layout_centerInParent="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@mipmap/em_mm_title_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/service_start"
+                            android:textSize="16sp"
+                            android:text="服务开始时间：--"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/service_end"
+                            android:textSize="16sp"
+                            android:layout_marginTop="8dp"
+                            android:text="服务开始时间：--"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_bangding"
+                        android:textColor="@color/white"
+                        android:text="绑定设备信息"
+                        android:background="@color/btnFalseColor"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center|right"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="40dp" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentLeft="true"
+                    android:text="车辆分享"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:layout_centerInParent="true"
+                    android:button="@null"
+                    android:background="@drawable/share_btn"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="30dp"
+                    android:layout_width="60dp"/>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/btn_addcar"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="添加车辆"
+                android:background="@color/btnFalseColor"
+                android:layout_marginTop="0dp"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+            <Button
+                android:id="@+id/btn_deletecar"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="删除车辆"
+                android:background="@color/btnFalseColor"
+                android:layout_marginTop="0dp"
+                android:layout_margin="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

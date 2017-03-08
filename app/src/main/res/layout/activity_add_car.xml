@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_car"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.AddCarActivity">
+<android.support.v7.widget.Toolbar
+    android:id="@+id/add_toolbar"
+    android:background="@color/whiteColor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</android.support.v7.widget.Toolbar>
+    <include layout="@layout/view_layout"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@drawable/reg_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+
+                style="@style/addCarStyle"
+                android:text="车 牌 号"/>
+            <TextView
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+                android:layout_marginLeft="10dp"
+               style="@style/lineStyle" />
+         <EditText
+             android:background="@null"
+             android:id="@+id/car_lpno"
+             android:hint="请输入车牌号(必填)"
+             style="@style/editStyle" />
+        </LinearLayout>
+       <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                style="@style/addCarStyle"
+                android:text="车辆别名 "/>
+            <TextView
+                android:visibility="invisible"
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <EditText
+                android:focusableInTouchMode="false"
+                android:background="@null"
+                android:id="@+id/car_idname"
+                android:hint="请输入车辆别名(选填)"
+                style="@style/editStyle" />
+        </LinearLayout>
+        <include layout="@layout/view_layout"/>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                style="@style/addCarStyle"
+                android:text="车款信息"
+                android:id="@+id/textView4" />
+
+            <TextView
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <TextView
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:id="@+id/car_brand"
+                android:hint="请选择车辆信息(必选)"
+                style="@style/textCarStyle" />
+
+
+        </LinearLayout>
+
+        <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                style="@style/addCarStyle"
+                android:text="排      量"
+                android:id="@+id/textView5" />
+
+            <TextView
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <TextView
+                android:id="@+id/pailiang_car"
+                android:hint="请选择排量(必选)"
+                style="@style/textCarStyle"/>
+
+        </LinearLayout>
+        <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                style="@style/addCarStyle"
+                android:text="变 速 箱"/>
+            <TextView
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle"/>
+            <TextView
+                android:id="@+id/change_speed"
+                android:hint="请选择变速箱类型(必选)"
+                style="@style/textCarStyle" />
+
+        </LinearLayout>
+        <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                style="@style/addCarStyle"
+                android:text="燃油类型"/>
+            <TextView
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <TextView
+                android:id="@+id/oil_type"
+                android:hint="请选择燃油类型(必选)"
+                style="@style/textCarStyle"  />
+
+
+        </LinearLayout>
+        <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                style="@style/addCarStyle"
+                android:text="车 架 号"
+                android:id="@+id/textView3" />
+
+            <TextView
+                android:visibility="invisible"
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <RelativeLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/qr_code"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/qr_code"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            <EditText
+                android:id="@+id/car_vin"
+                android:hint="请输入车架号(选填)"
+                style="@style/editStyle" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <include layout="@layout/view_layout"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                style="@style/addCarStyle"
+                android:text="车牌时间"/>
+            <TextView
+                android:visibility="invisible"
+                android:layout_marginLeft="0dp"
+                style="@style/baiozhiStyle" />
+            <TextView
+
+                android:layout_marginLeft="10dp"
+                style="@style/lineStyle" />
+            <TextView
+                android:id="@+id/shangpai_time"
+                android:hint="请选择上牌时间(选填)"
+                style="@style/textCarStyle" />
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    <Button
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:textColor="@color/whiteColor"
+        android:text="确认"
+        android:id="@+id/btn_addvehicle"
+        android:background="@color/btnFalseColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

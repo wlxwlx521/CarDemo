@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bind_device_vehicle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.BindDeviceVehicleActivity">
+    <include layout="@layout/toolbar_layout"/>
+    <include layout="@layout/view_layout"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/cityColor"
+            android:text="苏B0909"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="绑定设备"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            style="@style/textCarStyle" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/set_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:text="设备编码："
+                    style="@style/textCarStyle"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <EditText
+                        android:id="@+id/edit_device"
+                        android:hint="请输入设备编码"
+                        android:layout_width="wrap_content"
+                        style="@style/editStyle" />
+                    <ImageView
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/qr_code"
+                        android:id="@+id/device_scan"
+                       android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <TextView
+                android:id="@+id/btn_bind_device"
+               android:text="绑定"
+                android:gravity="center"
+               style="@style/textCarStyle"
+                android:layout_marginLeft="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/cityColor"
+            android:text="服务期查询和到期时间"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/set_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_height="50dp"
+                    android:text="服务期开始时间"
+                    style="@style/textCarStyle"/>
+                <include layout="@layout/view_layout"/>
+                <TextView
+                    android:layout_height="50dp"
+                    android:text="服务年限"
+                    style="@style/textCarStyle"/>
+            <include layout="@layout/view_layout"/>
+            <TextView
+                android:layout_height="50dp"
+                android:text="服务到期时间"
+                style="@style/textCarStyle"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

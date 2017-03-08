@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="reds">#f16d7a</color>
+    <color name="green">#b7d28d</color>
+    <color name="blue">#b8f1ed</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorTextde">#999</color>
+    <color name="selectColor">#a6d7b3</color>
+    <color name="btnChat">#303030</color>
+    <color name="btnFalseColor">#7cb3e6</color>
+    <color name="btnChooseColor">#FFBFBFBF</color>
+    <color name="whiteColor">#ffffff</color>
+    <color name="cityColor">#020202</color>
+    <color name="locationCity">#818181</color>
+    <color name="sideBarColor">#B0B0B0</color>
+    <color name="catrogyColor">#EBEBEB</color>
+    <color name="ccc">#F0F0F0</color>
+    <color name="biaozhiColor">#ff0d00</color>
+    <color name="strong">#FF5B26</color>
+    <color name="transparent">#000000</color>
+
+    <color name="red_226">#E25E5E</color>
+    <color name="error_color">#FF4081</color>
+
+    <color name="red">#FF5C26</color>
+    <color name="font_text">#666</color>
+    <color name="color_999">#999</color>
+    <color name="color_eee">#eee</color>
+    <color name="font_info">#999</color>
+    <color name="font_tips">#CCC</color>
+    <color name="divider">#EEE</color>
+    <color name="border_block">#EAEAEA</color>
+    <color name="textcolor">#028102</color>
+    <color name="color_ccc">#d9d8d8</color>
+    <color name="black">#B7B7B7</color>
+    <color name="white">#fff</color>
+    <!-- 扫描用到的 -->
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="no_read">#3C3C3C</color>
+    <color name="read">#969696</color>
+    <color name="erweima">#b0000000</color>
+    <color name="lightBlue500">#03a9f4</color>
+    <color name="lightBlue400">#29b6f6</color>
+    <color name="lightBlue300">#4fc3f7</color>
+    <color name="inside_progress">#ff6c4d70</color>
+    <color name="external_progress">#9C27B0</color>
+    <color name="bottom_velocimeter">#e515171d</color>
+    <color name="internal_velocimeter">#ffb4b4b4</color>
+    <color name="needle">#6200EA</color>
+    <color name="digital_number">#ffdcefff</color>
+
+</resources>

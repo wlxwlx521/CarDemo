@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_car_grid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="car.com.wlc.cardemo.activity.CarGridActivity">
+
+    <WebView
+        android:id="@+id/car_grid_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/car_grid_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="9dp"
+            android:background="@mipmap/iapppay_title_button_back_on" />
+
+        <TextView
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="汽车估值"
+            android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>

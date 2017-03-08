@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@drawable/mycar_circle"
+                android:src="@mipmap/start"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <include layout="@layout/point_layout"/>
+            <include layout="@layout/point_layout"/>
+            <include layout="@layout/point_layout"/>
+            <include layout="@layout/point_layout"/>
+            <ImageView
+                android:background="@drawable/mycar_circle"
+                android:src="@mipmap/end"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="11:50 起点"
+                android:textColor="@android:color/holo_green_light"
+                android:id="@+id/text_starttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_startid"
+                android:layout_margin="5dp"
+                android:text="河南省焦作市解放区人民路"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <include layout="@layout/view_layout"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:text="11:50 终点"
+                android:textColor="@android:color/holo_green_light"
+                android:id="@+id/text_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_endid"
+                android:text="河南省焦作市解放区人民路"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <include layout="@layout/view_cop_layout"/>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@mipmap/distance"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:text="11.4km"
+                android:textColor="@android:color/holo_red_light"
+                android:id="@+id/text_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="invisible"
+                android:id="@+id/text_stoptime"
+                android:layout_marginTop="5dp"
+
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <include
+        layout="@layout/view_layout"/>
+</LinearLayout>

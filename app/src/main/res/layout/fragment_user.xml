@@ -1,0 +1,305 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5eeee"
+    tools:context="car.com.wlc.cardemo.fragment.UserFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/huiyuan">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/user_headImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/user_image_circle"
+                android:src="@mipmap/usercenter_demo_headimage" />
+
+            <ImageView
+                android:id="@+id/user_xiugai_qianming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/user_headImage"
+                android:layout_toRightOf="@id/user_headImage"
+                android:src="@mipmap/user_nicheng" />
+
+            <TextView
+                android:id="@+id/user_text_nichen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/user_headImage"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/user_headImage"
+                android:text="你好"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/user_btn_jifen"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/user_headImage"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/user_xiugai_qianming"
+                android:background="@drawable/btn_qianming"
+                android:text="积分中心"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/user_btn_qiandao"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/user_headImage"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/user_btn_jifen"
+                android:background="@drawable/btn_qiandao"
+                android:text="每日签到"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/user_image_setting"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/seting" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:gravity="center"
+
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18sp"
+                    android:text="我的订单"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:textColor="#999"
+                    android:text="查看全部订单"
+                    android:gravity="center"
+                    android:drawableRight="@mipmap/em_mm_title_right"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    style="@style/userPaysStyle">
+                    <TextView
+                        android:id="@+id/user_pay"
+                        android:drawableTop="@mipmap/pay"
+                        android:text="待付款"
+                        style="@style/userPayStyle" />
+                    <TextView
+
+                        style="@style/payStyle"
+                        android:layout_toRightOf="@id/user_pay"
+
+
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/userPaysStyle">
+
+                    <TextView
+                        android:id="@+id/user_send_goods"
+                        android:drawableTop="@mipmap/send_goods"
+                        android:text="代发货"
+                        style="@style/userPayStyle"/>
+                    <TextView
+                        style="@style/payStyle"
+
+                        android:layout_toRightOf="@id/user_send_goods"
+
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/userPaysStyle">
+                    <TextView
+                        android:id="@+id/user_recrvie_goods"
+                        android:drawableTop="@mipmap/receive_goods"
+                        android:text="待收货"
+                        style="@style/userPayStyle" />
+                    <TextView
+                        style="@style/payStyle"
+                        android:layout_toRightOf="@id/user_recrvie_goods"
+
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/userPaysStyle">
+                    <TextView
+                        android:id="@+id/user_pinglun"
+                        android:drawableTop="@mipmap/pinglun"
+                        android:text="待评价"
+                        style="@style/userPayStyle" />
+                    <TextView
+                        style="@style/payStyle"
+                        android:layout_toRightOf="@id/user_pinglun"
+
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    style="@style/userPaysStyle">
+                    <TextView
+                        android:id="@+id/usr_shouhuo"
+                        android:drawableTop="@mipmap/shouhou_service"
+                        android:text="退款/售后"
+                        style="@style/userPayStyle" />
+                </RelativeLayout>
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:drawableLeft="@mipmap/fujin"
+                    android:text="附近"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/em_mm_title_right"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:drawableLeft="@mipmap/baoxian"
+                    android:text="我的保险"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/em_mm_title_right"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:id="@+id/add_mycars"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:drawableLeft="@mipmap/news_car"
+                    android:text="车辆信息"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/em_mm_title_right"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:drawableLeft="@mipmap/more"
+                    android:text="更多"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/em_mm_title_right"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="18sp"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:drawableLeft="@mipmap/banben"
+                    android:text="版本更新"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:layout_marginRight="10dp"
+                    android:drawableLeft="@mipmap/em_mm_title_right"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,548 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1eded">
+
+
+    <LinearLayout
+        android:id="@+id/bootom_lin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal"
+                android:id="@+id/top_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+
+                    android:id="@+id/location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:drawableRight="@mipmap/em_mm_title_right"
+                    android:text="焦作市"
+                    android:textColor="#666"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@id/location_text"
+                    android:background="@drawable/search_btn">
+
+                    <EditText
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:editable="true"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:hint="请输入你查询的车辆"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="#999"
+                        android:textSize="12sp"
+                        />
+
+                    <ImageView
+
+                        android:id="@+id/search_btn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_lost_find" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/home_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                app:canLoop="true" /><!--设置可以循环-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="#33000000"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/weather"
+                    style="@style/homeTopStyle"
+                    android:layout_marginLeft="10dp"
+                    android:drawableLeft="@mipmap/ic_weather_cloudy"
+                    android:text="5~-4℃" />
+
+                <TextView
+                    android:id="@+id/limit"
+                    style="@style/homeTopStyle"
+                    android:drawableLeft="@mipmap/ic_limit_line"
+                    android:text="不限行" />
+
+                <TextView
+                    android:id="@+id/wash"
+                    style="@style/homeTopStyle"
+                    android:drawableLeft="@mipmap/ic_wash_index"
+                    android:text="适宜洗车" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/day_carstatu"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/statu"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.8"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/carStyle"
+                            android:text="天天车况" />
+
+                        <TextView
+                            style="@style/carStyle"
+                            android:layout_marginTop="5dp"
+                            android:text="今日碳排放量参考值"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/home_car_tan"
+                            style="@style/carStyle"
+                            android:text="16.7g"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <car.com.wlc.cardemo.view.WaveView
+                        android:id="@+id/wave1"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginRight="10dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/day_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/price"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.8"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/carStyle"
+                            android:text="天天车价" />
+
+                        <TextView
+                            android:id="@+id/home_car_price"
+                            style="@style/carStyle"
+                            android:layout_marginTop="5dp"
+                            android:text="保值率: 4.5星"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <car.com.wlc.cardemo.view.WaveView
+                        android:id="@+id/wave2"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginRight="10dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/day_run"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@mipmap/carrung"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1.8"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/carStyle"
+                            android:text="天天驾驶" />
+
+                        <TextView
+                            android:id="@+id/home_car_run"
+                            style="@style/carStyle"
+                            android:layout_marginTop="5dp"
+                            android:text="驾驶行为糟糕，请平稳驾驶"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <car.com.wlc.cardemo.view.WaveView
+                        android:id="@+id/wave3"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:layout_marginRight="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/carfriend_chat"
+                        style="@style/homeLayoutStule">
+
+                        <TextView
+                            style="@style/myHomeCenter"
+                            android:layout_marginTop="5dp"
+                            android:text="车友互动" />
+
+                        <ImageView
+                            style="@style/myHomeCenter"
+                            android:layout_weight="2"
+                            android:src="@mipmap/home_icon_friend" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="#cac8c8" />
+
+                    <LinearLayout
+
+                        style="@style/homeLayoutStule">
+
+                        <TextView
+                            style="@style/myHomeCenter"
+                            android:layout_marginTop="5dp"
+                            android:text="当前积分" />
+
+                        <LinearLayout
+                            style="@style/myHomeCenter"
+                            android:layout_weight="2">
+
+                            <TextView
+                                style="@style/textHomeStyle"
+                                android:layout_marginLeft="0dp"
+                                android:text="0" />
+
+                            <TextView
+                                style="@style/textHomeStyle"
+                                android:text="0" />
+
+                            <TextView
+                                style="@style/textHomeStyle"
+                                android:text="0" />
+
+                            <TextView
+                                style="@style/textHomeStyle"
+                                android:text="0" />
+
+                            <TextView
+                                style="@style/textHomeStyle"
+                                android:text="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="#cac8c8" />
+
+                    <LinearLayout
+                        style="@style/homeLayoutStule"
+
+                        android:layout_weight="1.5">
+
+                        <TextView
+                            style="@style/myHomeCenter"
+                            android:layout_marginTop="5dp"
+                            android:text="今日任务" />
+
+                        <RelativeLayout
+                            style="@style/myHomeCenter"
+                            android:layout_weight="2">
+
+                            <ProgressBar
+                                android:id="@+id/progressBar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="18dp"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:max="100"
+                                android:progress="80"
+                                android:progressDrawable="@drawable/progressbar" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:text="8/10"
+                                android:textColor="@android:color/white" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#bebaba" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/car_shop_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/white">
+
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|right"
+                            android:layout_marginRight="10dp"
+                            android:src="@mipmap/car_shop" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="车服商城"
+                            android:textColor="#333" />
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="75dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.008"
+                        android:background="#bebaba" />
+
+                    <FrameLayout
+                        android:id="@+id/car_service_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/white">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|right"
+                            android:layout_marginRight="10dp"
+                            android:src="@mipmap/car_service" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="汽车服务"
+                            android:textColor="#333" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#bebaba" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btn_scan"
+                        style="@style/myHomeCenter"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:drawableBottom="@mipmap/scan"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="扫一扫" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#cac8c8" />
+
+                    <TextView
+                        android:id="@+id/btn_maiyiyan"
+                        style="@style/myHomeCenter"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:drawableBottom="@mipmap/miaoyiyan"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:text="瞄一眼" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#cac8c8" />
+
+                    <TextView
+                        android:id="@+id/btn_news"
+                        style="@style/myHomeCenter"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:drawableBottom="@mipmap/car_new"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="消息提醒" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|right"
+        android:layout_marginTop="5dp"
+        android:gravity="center">
+
+        <car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"
+            android:id="@+id/drawer"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            my:content="@+id/content"
+            my:direction="topToBottom"
+            my:handle="@+id/handle">
+
+            <RelativeLayout
+                android:id="@id/content"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@mipmap/juchi"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:drawableLeft="@mipmap/cxz_sos_help"
+                    android:gravity="center"
+                    android:text="一键救援" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="10dp"
+                    android:drawableLeft="@mipmap/cxz_sos_safety"
+                    android:gravity="center"
+                    android:text="在线报险" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@id/handle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sos"
+                android:translationX="160dp" />
+        </car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>
+    </LinearLayout>
+</FrameLayout>

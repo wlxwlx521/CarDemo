@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_reg"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="car.com.wlc.cardemo.activity.RegActivity">
+
+    <car.com.wlc.cardemo.view.MovingImageView
+        android:id="@+id/move_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/login"
+        app:miv_load_on_create="true"
+        app:miv_max_relative_size="3.0"
+        app:miv_min_relative_offset="0.2"
+        app:miv_repetitions="-1"
+        app:miv_speed="50"
+        app:miv_start_delay="0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/reg_background">
+
+            <TextView style="@style/baiozhiStyle" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@mipmap/cxz_login_name" />
+
+            <TextView style="@style/lineStyle" />
+
+            <EditText
+                android:id="@+id/phone_reg"
+                style="@style/editStyle"
+                android:hint="请输入手机号" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/reg_background"
+            android:orientation="horizontal">
+
+            <TextView style="@style/baiozhiStyle" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@mipmap/cxz_login_password" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="|" />
+
+            <EditText
+                android:id="@+id/password_reg"
+                style="@style/editStyle"
+                android:hint="请输入6-20位密码"
+                android:password="true" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/btn_passnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@mipmap/passnum_unshow"
+                    android:button="@null" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/reg_background"
+            android:orientation="horizontal">
+
+            <TextView style="@style/baiozhiStyle" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:src="@mipmap/cxz_login_citys" />
+
+            <TextView style="@style/lineStyle" />
+
+            <TextView
+                android:id="@+id/city_reg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="请选择常驻城市"
+                android:textSize="16sp" />
+
+            <TextView style="@style/lineStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp">
+
+            <CheckBox
+                android:id="@+id/check_reg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/reg_btn"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="√"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="我已阅读并同意使用条款和隐私政策"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/login_reg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/login_btn"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="免费注册"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <include
+            android:id="@+id/reg_progress"
+            layout="@layout/layout_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

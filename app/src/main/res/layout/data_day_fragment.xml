@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5ecfec"
+        android:gravity="center">
+
+        <TextView
+
+            android:id="@+id/des_data_btn"
+            style="@style/dataleftStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" />
+
+        <TextView
+            android:id="@+id/text_data_day"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="2016-12-14"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/add_data_btn"
+            android:layout_alignParentRight="true"
+            style="@style/datarightStyle"
+            android:layout_marginRight="30dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="#1A88A4"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="#1A88A4"
+                android:gravity="center">
+
+
+                <ImageView
+                    style="@style/dataImageStyle" />
+
+                <TextView
+
+                    android:id="@+id/day_km"
+                    android:text="36.8"
+                    style="@style/dataTextStyle"/>
+
+                <TextView
+                    android:text="当日里程"
+                    android:layout_above="@id/day_km"
+                    android:layout_marginBottom="5dp"
+                    style="@style/dataTextStyle"
+                    android:textSize="10sp"
+                     />
+
+                <TextView
+                    android:layout_below="@id/day_km"
+                    android:layout_marginTop="5dp"
+                    android:text="KM"
+                    style="@style/dataTextStyle"
+                    android:textSize="10sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+<include layout="@layout/my_day_week"/>
+    </LinearLayout>
+
+
+</LinearLayout>

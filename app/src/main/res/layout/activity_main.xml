@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fragment_main"
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:layout_height="0dp"></FrameLayout>
+<View
+android:layout_width="match_parent"
+android:layout_height="2dip"/>
+    <RadioGroup
+        android:id="@+id/radio_main"
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/btn_home"
+            style="@style/mainMyStyle"
+            android:text="首页"
+            android:drawableTop="@drawable/home_btn"
+            />
+        <RadioButton
+            android:id="@+id/btn_car"
+            style="@style/mainMyStyle"
+            android:text="车辆"
+            android:drawableTop="@drawable/car_btn"
+            />
+
+        <RadioButton
+            android:id="@+id/btn_data"
+            style="@style/mainMyStyle"
+            android:drawableTop="@drawable/data_btn"
+            android:text="数据"
+            />
+
+        <RadioButton
+            android:id="@+id/btn_user"
+            style="@style/mainMyStyle"
+            android:drawableTop="@drawable/user_btn"
+            android:text="个人中心"
+            />
+    </RadioGroup>
+
+</LinearLayout>

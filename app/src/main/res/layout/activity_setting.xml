@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.SettingActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/setting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
+
+    <include layout="@layout/view_layout"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_marginTop="2dp"
+            android:id="@+id/setting_usersetting"
+           style="@style/settingLayoutStyle">
+            <TextView
+                android:text="用户设置"
+                style="@style/setTextStyle"/>
+            <ImageView
+                style="@style/setImageStyle"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/account_setting"
+            style="@style/settingLayoutStyle">
+            <TextView
+                android:text="账号管理"
+                style="@style/setTextStyle"/>
+            <ImageView
+                style="@style/setImageStyle"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/set_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_marginTop="0dp"
+                android:id="@+id/help_setting"
+                style="@style/settingLayoutStyle">
+                <TextView
+                    android:text="帮助"
+                    style="@style/setTextStyle"/>
+                <ImageView
+                    style="@style/setImageStyle"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:background="@null"
+                android:layout_marginTop="0dp"
+                android:id="@+id/guanyu_car"
+                style="@style/settingLayoutStyle">
+                <TextView
+                    android:text="关于车行者"
+                    style="@style/setTextStyle"/>
+
+                <ImageView
+                    android:id="@+id/setting_car"
+                    style="@style/setImageStyle"/>
+                <TextView
+                    android:id="@+id/setting_version"
+                    android:layout_toLeftOf="@id/setting_car"
+                    android:gravity="center"
+                    android:textColor="@color/cityColor"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerInParent="true"
+                    android:text="V3.9.4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:background="@null"
+                android:layout_marginTop="0dp"
+                android:id="@+id/service_setting"
+                style="@style/settingLayoutStyle">
+                <TextView
+                    android:text="服务条款"
+                    style="@style/setTextStyle"/>
+
+                <ImageView
+                    style="@style/setImageStyle"/>
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:background="@null"
+                android:layout_marginTop="0dp"
+                android:id="@+id/using_setting"
+                style="@style/settingLayoutStyle">
+                <TextView
+                    android:text="推荐应用"
+                    style="@style/setTextStyle"/>
+
+                <ImageView
+                    style="@style/setImageStyle"/>
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+            <RelativeLayout
+                android:background="@null"
+                android:layout_marginTop="0dp"
+                android:id="@+id/tousu_seting"
+                style="@style/settingLayoutStyle">
+                <TextView
+                    android:text="投诉建议"
+                    style="@style/setTextStyle"/>
+
+                <ImageView
+                    style="@style/setImageStyle"/>
+            </RelativeLayout>
+            <include layout="@layout/view_layout"/>
+
+        </LinearLayout>
+        <RelativeLayout
+
+            android:background="@drawable/set_background"
+            android:layout_marginTop="10dp"
+            android:id="@+id/unregis_layout"
+            style="@style/settingLayoutStyle">
+            <TextView
+                android:layout_centerInParent="true"
+                android:text="退出登录"
+                style="@style/setTextStyle"/>
+
+            <ImageView
+                style="@style/setImageStyle"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

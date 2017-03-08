@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_basic"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.BasicActivity">
+    <include layout="@layout/title_layout"/>
+    <include
+        layout="@layout/view_layout"/>
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="@drawable/set_background"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车牌号" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_lnpo"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆别名" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_idName"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="品牌" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_name"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车型" />
+                <include layout="@layout/view_cop_layout"/>
+
+                <TextView
+                    android:id="@+id/basic_brand"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车款"
+                    android:id="@+id/textView6" />
+
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_styleName"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="颜色" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_color"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="发动机排量" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_displace"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="变速箱类型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_tra"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="燃油类型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_fuelstyle"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="排放标准" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_emissionStd"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="登记车型" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_registstype"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆所有者姓名" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_owner"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆所有者电话" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_ownerphone"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="生产时间" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_produceTime"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆服务属性" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_service"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车辆上牌时间" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_registtime"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="登记的交管所" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_registagency"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="当前里程" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_km"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+                <TextView
+                    style="@style/basicTextStyle"
+                    android:text="车架号" />
+                <include layout="@layout/view_cop_layout"/>
+                <TextView
+                    android:id="@+id/basic_vin"
+                    style="@style/basicTextStyle"
+                    />
+            </LinearLayout>
+            <include layout="@layout/view_layout"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

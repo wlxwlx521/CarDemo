@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_vehicle_brand_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.VehicleInfoActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/cartype_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </android.support.v7.widget.Toolbar>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/view_layout"/>
+            <TextView
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:background="@color/color_ccc"
+                android:text="热门品牌"
+                android:layout_width="match_parent"
+                />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_headview"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"/>
+
+           <include layout="@layout/city_diaglog"/>
+        </LinearLayout>
+        <!-- The navigation drawer -->
+
+            <ListView
+                android:visibility="gone"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/set_background"
+                android:id="@+id/left_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+        <ListView
+            android:background="@drawable/set_background"
+            android:visibility="gone"
+            android:id="@+id/right_listview"
+            android:layout_marginLeft="116dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#5ecfec"
+        android:gravity="center">
+
+        <TextView
+
+            android:id="@+id/des_week_btn"
+            style="@style/dataleftStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/monday_date_week"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="12/11"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_data_split"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@id/monday_date_week"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/last_date_weeks"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@id/text_data_split"
+                android:gravity="center"
+                android:text="12/11"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/add_week_btn"
+            style="@style/datarightStyle"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="#328fba"
+            android:gravity="center">
+
+
+            <ImageView
+                style="@style/dataImageStyle" />
+
+            <TextView
+
+                android:id="@+id/week_km"
+                android:text="36.8"
+                style="@style/dataTextStyle"/>
+
+            <TextView
+                android:text="本周里程"
+                android:layout_above="@id/week_km"
+                android:layout_marginBottom="5dp"
+                style="@style/dataTextStyle"
+                android:textSize="10sp"
+                />
+
+            <TextView
+                android:layout_below="@id/week_km"
+                android:layout_marginTop="5dp"
+                android:text="KM"
+                style="@style/dataTextStyle"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+        <include layout="@layout/my_day_week"/>
+</LinearLayout>
+
+    </LinearLayout>

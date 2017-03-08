@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/location_layout"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/location_view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/color_ccc"
+                android:gravity="center_vertical"
+                android:text="当前定位城市"
+                android:paddingLeft="10dp"
+                android:textColor="@color/cityColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:gravity="center|left"
+                android:text="焦作"
+                android:id="@+id/location_city"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/font_text"
+                android:textSize="15sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/hot_city_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/color_ccc"
+                android:gravity="center_vertical"
+                android:text="热门城市"
+                android:paddingLeft="10dp"
+                android:textColor="@color/cityColor"
+                android:textSize="16sp" />
+            <car.com.wlc.cardemo.view.cityview.MyListView
+                android:background="@color/whiteColor"
+                android:id="@+id/myList_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+            <FrameLayout
+                android:layout_below="@id/mycar_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_sticky_example"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none" />
+
+                <include layout="@layout/layout_sticky_header_view" />
+            </FrameLayout>
+    </LinearLayout>
+        <car.com.wlc.cardemo.view.cityview.MySlideView
+            android:background="@drawable/sidebar_background"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/my_slide_view"
+            android:layout_width="26dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    <car.com.wlc.cardemo.utils.city.CircleTextView
+        android:id="@+id/my_circle_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:visibility="gone" />
+</RelativeLayout>
