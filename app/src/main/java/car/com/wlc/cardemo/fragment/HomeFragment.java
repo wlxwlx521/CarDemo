@@ -11,8 +11,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +30,8 @@ import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.model.LatLng;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
@@ -59,6 +66,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     private ConvenientBanner mBanner;
     private TextView mLocation;
     private LatLng latLng = null;
+    private FloatingActionsMenu fab_menu;
 
 
     public static HomeFragment getInstance() {
@@ -100,7 +108,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
         //显示的图片
         imList = new ArrayList();
         for (int i = 0; i < imageIds.length; i++) {
-            imList.add(new BannerItem(titles[i],imageIds[i]));
+            imList.add(new BannerItem(titles[i], imageIds[i]));
         }
         inintView(view);
 
@@ -109,7 +117,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
 
     private void inintView(View view) {
         mBanner = ((ConvenientBanner) view.findViewById(R.id.home_banner));
-        mLocation = ((TextView) view.findViewById(R.id.location_text));
+        // mLocation = ((TextView) view.findViewById(R.id.location_text));
         view.findViewById(R.id.car_shop_layout).setOnClickListener(this);
         waveView1 = (WaveView) view.findViewById(R.id.wave1);
         waveView2 = (WaveView) view.findViewById(R.id.wave2);
@@ -125,27 +133,47 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
         waveView2.setCurrentText("58分", Color.parseColor("#3F51B5"), 46);
         waveView3.setCurrentText("38分", Color.parseColor("#3F51B5"), 46);
         view.findViewById(R.id.btn_scan).setOnClickListener(this);
-        //slidingDrawer的点击事件
-        final ImageView mHandleView = (ImageView) view.findViewById(R.id.handle);
         initBanner();
-        MultiDirectionSlidingDrawer drawer = (MultiDirectionSlidingDrawer) view.findViewById(R.id.drawer);
+
+        //搜索框
+//        final ImageButton ibtn = (ImageButton) view.findViewById(R.id.serach_ibtn);
+////        final MaterialSearchBar searchBar = (MaterialSearchBar) view.findViewById(R.id.searchBar);
+//        ibtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ibtn.setVisibility(View.GONE);
+//                searchBar.setVisibility(View.VISIBLE);
+//                searchBar.setFocusable(true);
+//                searchBar.setFocusableInTouchMode(true);
+//                searchBar.requestFocus();
+//            }
+//        });
+
+        //悬浮按钮
+        //   fab_menu = (FloatingActionsMenu) view.findViewById(R.id.fab_menu);
 
 
-        //sos点击事件
-        drawer.setOnDrawerOpenListener(new MultiDirectionSlidingDrawer.OnDrawerOpenListener() {
-            @Override
-            public void onDrawerOpened() {
-                mHandleView.setImageResource(R.mipmap.sos);
+        //slidingDrawer的点击事件
+//        final ImageView mHandleView = (ImageView) view.findViewById(R.id.handle);
+//
+//        MultiDirectionSlidingDrawer drawer = (MultiDirectionSlidingDrawer) view.findViewById(R.id.drawer);
 
-            }
-        });
-        drawer.setOnDrawerCloseListener(new MultiDirectionSlidingDrawer.OnDrawerCloseListener() {
-            @Override
-            public void onDrawerClosed() {
-                mHandleView.setImageResource(R.mipmap.sos);
-
-            }
-        });
+//
+//        //sos点击事件
+//        drawer.setOnDrawerOpenListener(new MultiDirectionSlidingDrawer.OnDrawerOpenListener() {
+//            @Override
+//            public void onDrawerOpened() {
+//                mHandleView.setImageResource(R.mipmap.sos);
+//
+//            }
+//        });
+//        drawer.setOnDrawerCloseListener(new MultiDirectionSlidingDrawer.OnDrawerCloseListener() {
+//            @Override
+//            public void onDrawerClosed() {
+//                mHandleView.setImageResource(R.mipmap.sos);
+//
+//            }
+//        });
     }
 
     private void initBanner() {
@@ -187,13 +215,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
                 MPermissions.requestPermissions(this, 4, Manifest.permission.CAMERA);
 
 
-
                 break;
             case R.id.car_shop_layout:
 
-                startActivity(new Intent(getContext(), CarShopActivity
-
-                        .class));
+                startActivity(new Intent(getContext(), CarShopActivity.class));
                 break;
             case R.id.day_carstatu:
             case R.id.day_price:
@@ -314,24 +339,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     }
 
 
-
-
     @PermissionGrant(4)
-    public void requestContactSuccess()
-    {
+    public void requestContactSuccess() {
         startActivityForResult(new Intent(getContext(), CaptureActivity.class), REQUSECODE);
         Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
     }
 
     @PermissionDenied(4)
-    public void requestContactFailed()
-    {
+    public void requestContactFailed() {
         Toast.makeText(getActivity(), "授权失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }

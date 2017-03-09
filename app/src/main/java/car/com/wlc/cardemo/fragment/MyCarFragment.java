@@ -108,6 +108,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     private void requestLocationPermission() {
         Log.e(TAG, "requestLocationPermission: " + "申请授权");
+
         MPermissions.requestPermissions(this, 5, Manifest.permission.ACCESS_COARSE_LOCATION);
 
     }

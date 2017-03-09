@@ -18,13 +18,14 @@ import java.util.List;
 
 import car.com.wlc.cardemo.R;
 import car.com.wlc.cardemo.adapter.GridAdapter;
+import car.com.wlc.cardemo.javaBean.BannerItem;
 import car.com.wlc.cardemo.view.LocalImageHolderView;
 
 
 public class CarShopActivity extends AppCompatActivity {
 
     private ConvenientBanner mBanner;
-    private ArrayList<Integer> imlist;
+    private ArrayList<BannerItem> imlist;
     private GridView mGridView;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -48,9 +49,10 @@ public class CarShopActivity extends AppCompatActivity {
     }
 
     private void initImData() {
-        imlist = new ArrayList<Integer>();
+        imlist = new ArrayList<BannerItem>();
         for (int i = 0; i < 4; i++) {
-            imlist.add(R.mipmap.banners);
+            BannerItem bannerItem = new BannerItem(i+1+"" , R.mipmap.banners);
+            imlist.add(bannerItem);
 
         }
     }

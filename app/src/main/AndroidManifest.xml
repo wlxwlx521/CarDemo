@@ -31,9 +31,10 @@
             debug 40282ccdafba29dbf39ab413e0b43f45  1fd50207b786eadd7b07b987d33d8b39
             release 9040f120feaa791ad824752e945c0910
         -->
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="40282ccdafba29dbf39ab413e0b43f45" />
+            android:value="1fd50207b786eadd7b07b987d33d8b39" />
 
         <activity android:name=".activity.SlpahActivity">
             <intent-filter>
