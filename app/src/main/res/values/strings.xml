@@ -9,7 +9,7 @@
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="defaultColor">Default</string>
-    <string name="app_name">车马炮</string>
+    <string name="app_name">車马炮</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -47,4 +47,34 @@
     <string name="date_picker_increment_year_button">Increment year</string>
     <!-- Description of the button to decrement the DatePicker's year value. [CHAR LIMIT=NONE] -->
     <string name="date_picker_decrement_year_button">Decrement year</string>
+
+
+    <string name="input_hint">Message..</string>
+
+    <string name="unknown">Unknown</string>
+
+    <!-- Delivery status -->
+
+
+    <string name="sending">Sending</string>
+
+    <string name="sent">Sent</string>
+
+    <string name="seen">Seen</string>
+
+    <string name="error">Error</string>
+
+    <!-- Default setting for demo-->
+
+
+    <string name="default_text_short">Hello!!</string>
+
+    <string name="default_text_long">欢迎加入车马炮只能数据有限公司！</string>
+    <string name="default_time_text">10:30 AM</string>
+
+    <string name="default_date_cell_text">2016/08/08</string>
+
+    <string name="default_user_name_1">Michael</string>
+
+    <string name="default_user_name_2">Alice</string>
 </resources>

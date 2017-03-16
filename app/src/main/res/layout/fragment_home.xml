@@ -35,7 +35,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:drawableRight="@mipmap/em_mm_title_right"
-            android:text="焦作市"
+            android:text="上海市"
             android:textColor="#666"
             android:textSize="16sp" />
             <RelativeLayout
@@ -345,6 +345,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+
                         android:id="@+id/carfriend_chat"
                         style="@style/homeLayoutStule">
 

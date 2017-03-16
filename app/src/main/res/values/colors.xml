@@ -67,4 +67,41 @@
         <color name="blue_semi_transparent">#805677fc</color>
         <color name="blue_semi_transparent_pressed">#80738ffe</color>
 
+    <!-- 聊天 -->
+
+    <color name="red500">#F44336</color>
+
+    <color name="teal100">#B2DFDB</color>
+
+    <color name="teal500">#009688</color>
+
+    <color name="cyan900">#006064</color>
+
+
+
+    <color name="green500">#4CAF50</color>
+
+    <!-- Grey scales -->
+
+
+    <color name="gray200">#EEEEEE</color>
+    <color name="blue500">#0080C0</color>
+
+    <color name="gray300">#E0E0E0</color>
+
+    <color name="blueGray50">#ECEFF1</color>
+
+    <color name="blueGray200">#B0BEC5</color>
+
+    <color name="blueGray300">#90A4AE</color>
+
+    <color name="blueGray500">#607D8B</color>
+
+    <!-- Bubble color -->
+
+
+    <color name="default_left_bubble_color">@color/button_material_light</color>
+
+    <color name="default_right_bubble_color">@color/green500</color>
+
     </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_vehicle_condition"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.chatmessage.car.VehicleConditionActivity">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.example.administrator.chatmessage.car.view.RadarView
+        android:id="@+id/radar_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:innerCircleColor="#fffefe"
+        app:innerCircleRadius="35"
+        app:textSize="20sp"
+        app:progress="82"
+        app:outCircleColor="#dbdad7"
+        app:outArcwidth="10dp"
+
+        />
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/check_text"
+        android:text="正在检测动力系统，请稍后。。。。"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</ListView>
+</LinearLayout>

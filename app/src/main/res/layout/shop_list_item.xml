@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/shop_list_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@mipmap/luntai" />
+
+    <TextView
+        android:id="@+id/shop_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="fengshenluntai" />
+
+    <LinearLayout
+
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:background="@mipmap/renminbi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/shop_list_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.00"
+            android:textColor="#db4417"/>
+    </LinearLayout>
+
+</LinearLayout>

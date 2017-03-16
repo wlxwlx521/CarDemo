@@ -9,8 +9,8 @@
 <ImageView
     android:id="@+id/image_item"
     android:background="@mipmap/one"
-    android:layout_width="50dp"
-    android:layout_height="50dp" />
+    android:layout_width="40dp"
+    android:layout_height="40dp" />
     <TextView
         android:id="@+id/text_item"
         android:gravity="center"

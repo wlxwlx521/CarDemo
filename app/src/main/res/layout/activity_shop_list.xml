@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_shop_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="car.com.wlc.cardemo.activity.ShopListActivity">
+<LinearLayout
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+    <ImageButton
+        android:id="@+id/classify_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/back" />
+
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/search_btn">
+
+        <ImageView
+
+            android:id="@+id/search_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_lost_find" />
+
+        <EditText
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:editable="true"
+            android:hint="请输入关键字"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#999"
+            android:textSize="12sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/editText" />
+    </RelativeLayout>
+</LinearLayout>
+
+    <GridView
+        android:id="@+id/shop_list_grid"
+        android:layout_width="match_parent"
+        android:numColumns="2"
+        android:layout_height="match_parent">
+
+
+    </GridView>
+</LinearLayout>

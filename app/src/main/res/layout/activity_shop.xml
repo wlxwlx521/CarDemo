@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabIndicatorColor="@color/white"
+        app:tabSelectedTextColor="@color/blue_semi_transparent" />
+    <!--//导航栏背景颜色-->
+    <!--android:background="#ffff00"-->
+    <!--//指示器颜色-->
+    <!--app:tabIndicatorColor="#66ff33"-->
+    <!--//指示器高度-->
+    <!--app:tabIndicatorHeight="20p"-->
+    <!--//普通状态下文字的颜色-->
+    <!--app:tabTextColor="@color/colorPrimary"-->
+    <!--//选中时文字的颜色-->
+    <!--app:tabSelectedTextColor="#CC33FF"-->
+    <!--//是否可滑动：fixed：固定；scrollable：可滑动-->
+    <!--app:tabMode="fixed"-->
+    <!--//设置选项卡的背景：此处要写一个selector）-->
+    <!--app:tabBackground="@drawable/selected"/>-->
+
+
+</LinearLayout>

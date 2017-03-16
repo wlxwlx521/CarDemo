@@ -17,13 +17,16 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/user_headImage"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:background="@drawable/user_image_circle"
-                android:src="@mipmap/usercenter_demo_headimage" />
-
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/usercenter_demo_headimage"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                app:civ_fill_color="@color/white" />
             <ImageView
                 android:id="@+id/user_xiugai_qianming"
                 android:layout_width="wrap_content"
@@ -36,12 +39,12 @@
                 android:id="@+id/user_text_nichen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/user_headImage"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/user_headImage"
-                android:text="你好"
+                android:text="车马炮"
                 android:textColor="@android:color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                />
 
             <Button
                 android:id="@+id/user_btn_jifen"

@@ -1,0 +1,100 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="car.com.wlc.cardemo.fragment.ClassifyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/classify_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/back" />
+
+            <RelativeLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/search_btn">
+
+                <EditText
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="8dp"
+                    android:background="@null"
+                    android:editable="true"
+                    android:hint="请输入关键字"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="#999"
+                    android:textSize="12sp" />
+
+                <ImageView
+
+                    android:id="@+id/search_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_lost_find" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/classsify_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <q.rorbin.verticaltablayout.VerticalTabLayout
+                    android:id="@+id/classify_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F8F8FF"
+                    app:indicator_color="@color/colorAccent"
+                    app:tab_height="50dp"
+                    app:indicator_gravity="left"
+                    app:tab_mode="scrollable" />
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/classify_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
