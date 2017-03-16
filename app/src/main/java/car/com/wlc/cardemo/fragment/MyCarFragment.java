@@ -295,7 +295,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     isFirstLoc = false;
                 }
             } else {
-                ToastUtil.toastUtils(getContext(), aMapLocation.getErrorInfo());
+               // ToastUtil.toastUtils(getContext(), aMapLocation.getErrorInfo());
 
             }
         }

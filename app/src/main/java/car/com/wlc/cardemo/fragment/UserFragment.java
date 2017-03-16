@@ -72,7 +72,7 @@ public class UserFragment extends Fragment {
     private void init() {
         Map<String, UserInfo> data = SharedData.getData(getContext());
         final UserInfo userInfo = data.get(Contact.USERINFO);
-        mNike.setText(userInfo.getUserPhone());
+        mNike.setText("車马炮");
         mSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

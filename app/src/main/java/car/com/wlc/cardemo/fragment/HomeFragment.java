@@ -11,14 +11,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +25,6 @@ import com.amap.api.maps.model.LatLng;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
@@ -39,17 +32,20 @@ import com.zhy.m.permission.PermissionGrant;
 import java.util.ArrayList;
 
 import car.com.wlc.cardemo.R;
-import car.com.wlc.cardemo.activity.CarShopActivity;
 import car.com.wlc.cardemo.activity.LoginActivity;
+import car.com.wlc.cardemo.activity.ShopActivity;
+import car.com.wlc.cardemo.chatmessage.car.VehicleConditionActivity;
+import car.com.wlc.cardemo.chatmessage.chat.ui.ChatActivity;
 import car.com.wlc.cardemo.javaBean.BannerItem;
 import car.com.wlc.cardemo.javaBean.Contact;
 import car.com.wlc.cardemo.javaBean.UserInfo;
 import car.com.wlc.cardemo.utils.LocationUtils;
 import car.com.wlc.cardemo.utils.SharedData;
 import car.com.wlc.cardemo.view.LocalImageHolderView;
-import car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer;
 import car.com.wlc.cardemo.view.WaveView;
 import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
+
+import static car.com.wlc.cardemo.R.id.carfriend_chat;
 
 
 /**
@@ -67,6 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     private TextView mLocation;
     private LatLng latLng = null;
     private FloatingActionsMenu fab_menu;
+    private TextView mCityText;
 
 
     public static HomeFragment getInstance() {
@@ -116,6 +113,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     }
 
     private void inintView(View view) {
+
+
+        view.findViewById(carfriend_chat).setOnClickListener(this);
+        view.findViewById(R.id.day_carstatu).setOnClickListener(this);
+        mCityText = ((TextView) view.findViewById(R.id.location_text));
+
         mBanner = ((ConvenientBanner) view.findViewById(R.id.home_banner));
         // mLocation = ((TextView) view.findViewById(R.id.location_text));
         view.findViewById(R.id.car_shop_layout).setOnClickListener(this);
@@ -135,45 +138,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
         view.findViewById(R.id.btn_scan).setOnClickListener(this);
         initBanner();
 
-        //搜索框
-//        final ImageButton ibtn = (ImageButton) view.findViewById(R.id.serach_ibtn);
-////        final MaterialSearchBar searchBar = (MaterialSearchBar) view.findViewById(R.id.searchBar);
-//        ibtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ibtn.setVisibility(View.GONE);
-//                searchBar.setVisibility(View.VISIBLE);
-//                searchBar.setFocusable(true);
-//                searchBar.setFocusableInTouchMode(true);
-//                searchBar.requestFocus();
-//            }
-//        });
-
-        //悬浮按钮
-        //   fab_menu = (FloatingActionsMenu) view.findViewById(R.id.fab_menu);
-
-
-        //slidingDrawer的点击事件
-//        final ImageView mHandleView = (ImageView) view.findViewById(R.id.handle);
-//
-//        MultiDirectionSlidingDrawer drawer = (MultiDirectionSlidingDrawer) view.findViewById(R.id.drawer);
-
-//
-//        //sos点击事件
-//        drawer.setOnDrawerOpenListener(new MultiDirectionSlidingDrawer.OnDrawerOpenListener() {
-//            @Override
-//            public void onDrawerOpened() {
-//                mHandleView.setImageResource(R.mipmap.sos);
-//
-//            }
-//        });
-//        drawer.setOnDrawerCloseListener(new MultiDirectionSlidingDrawer.OnDrawerCloseListener() {
-//            @Override
-//            public void onDrawerClosed() {
-//                mHandleView.setImageResource(R.mipmap.sos);
-//
-//            }
-//        });
     }
 
     private void initBanner() {
@@ -218,9 +182,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
                 break;
             case R.id.car_shop_layout:
 
-                startActivity(new Intent(getContext(), CarShopActivity.class));
+                // startActivity(new Intent(getContext(), CarShopActivity.class));
+                startActivity(new Intent(getContext(), ShopActivity.class));
                 break;
             case R.id.day_carstatu:
+                startActivity(new Intent(getActivity(), VehicleConditionActivity.class));
+                break;
             case R.id.day_price:
             case R.id.day_run:
                 if (userInfo.isStatus())
@@ -234,6 +201,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
                 }
 
                 break;
+            case R.id.carfriend_chat:
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+                break;
+
+
         }
 
     }
