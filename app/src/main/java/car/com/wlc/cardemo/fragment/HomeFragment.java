@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,19 +32,30 @@ import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import car.com.wlc.cardemo.R;
 import car.com.wlc.cardemo.activity.LoginActivity;
 import car.com.wlc.cardemo.activity.ShopActivity;
+import car.com.wlc.cardemo.adapter.CityAdapter;
 import car.com.wlc.cardemo.chatmessage.car.VehicleConditionActivity;
 import car.com.wlc.cardemo.chatmessage.chat.ui.ChatActivity;
 import car.com.wlc.cardemo.javaBean.BannerItem;
+import car.com.wlc.cardemo.javaBean.CityBean;
 import car.com.wlc.cardemo.javaBean.Contact;
 import car.com.wlc.cardemo.javaBean.UserInfo;
 import car.com.wlc.cardemo.utils.LocationUtils;
 import car.com.wlc.cardemo.utils.SharedData;
+import car.com.wlc.cardemo.utils.city.CircleTextView;
+import car.com.wlc.cardemo.utils.city.CitySortModel;
+import car.com.wlc.cardemo.utils.city.PinyinComparator;
+import car.com.wlc.cardemo.utils.city.PinyinUtils;
 import car.com.wlc.cardemo.view.LocalImageHolderView;
 import car.com.wlc.cardemo.view.WaveView;
+import car.com.wlc.cardemo.view.cityview.MySlideView;
 import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
 
 import static car.com.wlc.cardemo.R.id.carfriend_chat;
@@ -51,10 +64,9 @@ import static car.com.wlc.cardemo.R.id.carfriend_chat;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener, LocationSource, AMapLocationListener {
-    private OnLocationChangedListener mListener;
-    private AMapLocationClient mlocationClient;
-    private AMapLocationClientOption mLocationOption;
+public class HomeFragment extends Fragment implements View.OnClickListener ,MySlideView.onTouchListener, CityAdapter.onItemClickListener{
+
+
     private static HomeFragment homeFragment;
     private WaveView waveView1, waveView2, waveView3;
     private int REQUSECODE = 1;
@@ -64,7 +76,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     private LatLng latLng = null;
     private FloatingActionsMenu fab_menu;
     private TextView mCityText;
-
+    private List<CitySortModel> cityList=new ArrayList<>();
+    public static List<String> pinyinList = new ArrayList<>();
+    private Set<String> firstPinYin = new LinkedHashSet<>();
+    private AlertDialog dialog;
+    private CityAdapter adapter;
+    private CircleTextView circleTxt;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
 
     public static HomeFragment getInstance() {
         if (homeFragment == null) {
@@ -115,10 +134,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     private void inintView(View view) {
 
 
-        view.findViewById(carfriend_chat).setOnClickListener(this);
+        view.findViewById(R.id.carfriend_chat).setOnClickListener(this);
         view.findViewById(R.id.day_carstatu).setOnClickListener(this);
         mCityText = ((TextView) view.findViewById(R.id.location_text));
-
+        mCityText.setOnClickListener(this);
         mBanner = ((ConvenientBanner) view.findViewById(R.id.home_banner));
         // mLocation = ((TextView) view.findViewById(R.id.location_text));
         view.findViewById(R.id.car_shop_layout).setOnClickListener(this);
@@ -140,6 +159,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
 
     }
 
+    /**
+     * 轮播图
+     */
     private void initBanner() {
 
         //自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可。
@@ -190,24 +212,113 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
                 break;
             case R.id.day_price:
             case R.id.day_run:
-                if (userInfo.isStatus())
+                if (userInfo.isStatus()){
 
-                {
-
-                } else
-
-                {
+                } else{
                     showLoadDialog();
                 }
-
                 break;
-            case R.id.carfriend_chat:
+            case carfriend_chat:
                 startActivity(new Intent(getActivity(), ChatActivity.class));
+                break;
+            case R.id.location_text :
+                showDialogCity();
                 break;
 
 
         }
 
+    }
+    /**
+     * 显示dialog
+     */
+    private void showDialogCity() {
+        cityList.clear();
+        pinyinList.clear();
+        firstPinYin.clear();
+        //
+        //城市名字
+        List<String> stringList = CityBean.getSampleContactList();
+        PinyinComparator pinyinComparator = new PinyinComparator();
+        for (int i = 0; i < stringList.size(); i++) {
+            CitySortModel sortModel = new CitySortModel();
+            String cityName = stringList.get(i);
+            sortModel.setCityName(cityName);
+            String pingYin = PinyinUtils.getPingYin(cityName);
+            String sortString = pingYin.substring(0, 1).toUpperCase();
+
+            if (sortString.matches("[A-Z]")) {
+                sortModel.setCityPinyin(sortString);
+            }
+            cityList.add(sortModel);
+        }
+        Collections.sort(cityList, pinyinComparator);
+        for (CitySortModel city : cityList) {
+            firstPinYin.add(city.getCityPinyin().substring(0, 1));
+        }
+        for (String string : firstPinYin) {
+            pinyinList.add(string);
+        }
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.city_diaglog, null);
+        initCityView(view);
+        builder.setView(view);
+        dialog = builder.create();
+
+        dialog.show();
+
+    }
+
+    private void initCityView(View view) {
+        MySlideView mySlideView = (MySlideView) view.findViewById(R.id.my_slide_view);
+         circleTxt = (CircleTextView) view.findViewById(R.id.my_circle_view);
+        final TextView  tvStickyHeaderView = (TextView) view.findViewById(R.id.tv_sticky_header_view);
+           recyclerView = (RecyclerView) view.findViewById(R.id.rv_sticky_example);
+         layoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new CityAdapter(getContext(),1);
+        recyclerView.setAdapter(adapter);
+        mySlideView.setPingyinList(pinyinList);
+        adapter.refresh(cityList);
+
+        mySlideView.setListener(this);
+        adapter.setListener(this);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+                View stickyInfoView = recyclerView.findChildViewUnder(
+                        tvStickyHeaderView.getMeasuredWidth() / 2, 5);
+
+                if (stickyInfoView != null && stickyInfoView.getContentDescription() != null) {
+                    tvStickyHeaderView.setText(String.valueOf(stickyInfoView.getContentDescription()));
+                }
+
+                View transInfoView = recyclerView.findChildViewUnder(
+                        tvStickyHeaderView.getMeasuredWidth() / 2, tvStickyHeaderView.getMeasuredHeight() + 1);
+
+                if (transInfoView != null && transInfoView.getTag() != null) {
+                    int transViewStatus = (int) transInfoView.getTag();
+                    int dealtY = transInfoView.getTop() - tvStickyHeaderView.getMeasuredHeight();
+                    if (transViewStatus == CityAdapter.HAS_STICKY_VIEW) {
+                        if (transInfoView.getTop() > 0) {
+                            tvStickyHeaderView.setTranslationY(dealtY);
+                        } else {
+                            tvStickyHeaderView.setTranslationY(0);
+                        }
+                    } else if (transViewStatus == CityAdapter.NONE_STICKY_VIEW) {
+                        tvStickyHeaderView.setTranslationY(0);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -261,54 +372,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     }
 
 
-    @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
-        if (aMapLocation != null) {
-            if (aMapLocation.getErrorCode() == 0) {
-                mLocation.setText(aMapLocation.getCity());
-                latLng = new LatLng(aMapLocation.getLongitude(), aMapLocation.getLatitude());
-
-            } else {
-                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                Log.e("AmapError", "location Error, ErrCode:" + aMapLocation.getErrorInfo());
-            }
-        }
-    }
-
-    /**
-     * 激活定位
-     *
-     * @param onLocationChangedListener
-     */
-    @Override
-    public void activate(OnLocationChangedListener onLocationChangedListener) {
-        mListener = onLocationChangedListener;
-        if (mlocationClient == null) {
-            mlocationClient = new AMapLocationClient(getActivity());
-            mLocationOption = new AMapLocationClientOption();
-
-            //设置定位监听
-            mlocationClient.setLocationListener(this);
-            //设置定位参数
-            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-            mlocationClient.setLocationOption(mLocationOption);
-            // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
-            // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
-            // 在定位结束后，在合适的生命周期调用onDestroy()方法
-            // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
-            mlocationClient.startLocation();
-        }
-    }
-
-    @Override
-    public void deactivate() {
-        mListener = null;
-        if (mlocationClient != null) {
-            mlocationClient.stopLocation();
-            mlocationClient.onDestroy();
-        }
-        mlocationClient = null;
-    }
 
 
     @PermissionGrant(4)
@@ -326,5 +389,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Loca
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         MPermissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void itemClick(int i) {
+        mCityText.setText(cityList.get(i).getCityName());
+        dialog.dismiss();
+    }
+
+    @Override
+    public void showTextView(String textView, boolean dismiss) {
+        if (dismiss) {
+            circleTxt.setVisibility(View.GONE);
+        } else {
+            circleTxt.setVisibility(View.VISIBLE);
+            circleTxt.setText(textView);
+        }
+
+        int selectPosition = 0;
+        for (int i = 0; i < cityList.size(); i++) {
+            if (cityList.get(i).getCityPinyin().equals(textView)) {
+                selectPosition = i;
+                break;
+            }
+        }
+
+        scroll2Position(selectPosition);
+    }
+    private void scroll2Position(int index) {
+        int firstPosition = layoutManager.findFirstVisibleItemPosition();
+        int lastPosition = layoutManager.findLastVisibleItemPosition();
+        if (index <= firstPosition) {
+            recyclerView.scrollToPosition(index);
+        } else if (index <= lastPosition) {
+            int top = recyclerView.getChildAt(index - firstPosition).getTop();
+            recyclerView.scrollBy(0, top);
+        } else {
+            recyclerView.scrollToPosition(index);
+        }
     }
 }
