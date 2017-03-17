@@ -58,13 +58,15 @@ import car.com.wlc.cardemo.view.WaveView;
 import car.com.wlc.cardemo.view.cityview.MySlideView;
 import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
 
+import static android.content.ContentValues.TAG;
 import static car.com.wlc.cardemo.R.id.carfriend_chat;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements View.OnClickListener ,MySlideView.onTouchListener, CityAdapter.onItemClickListener{
+
+public class HomeFragment extends Fragment implements LocationSource, AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
     private static HomeFragment homeFragment;
@@ -76,7 +78,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
     private LatLng latLng = null;
     private FloatingActionsMenu fab_menu;
     private TextView mCityText;
-    private List<CitySortModel> cityList=new ArrayList<>();
+    private List<CitySortModel> cityList = new ArrayList<>();
     public static List<String> pinyinList = new ArrayList<>();
     private Set<String> firstPinYin = new LinkedHashSet<>();
     private AlertDialog dialog;
@@ -84,6 +86,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
     private CircleTextView circleTxt;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
+
+
+    private AMapLocationClient mlocationClient;
+    private OnLocationChangedListener mListener;
+    private AMapLocationClientOption mLocationOption;
 
     public static HomeFragment getInstance() {
         if (homeFragment == null) {
@@ -112,14 +119,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        requestLocationPermission();
         // Inflate the layout for this fragment
+        if (mlocationClient == null) {
+            Log.e("lyf", "onCreateView: "+"1111111111111" );
+            mlocationClient = new AMapLocationClient(getActivity());
+            mLocationOption = new AMapLocationClientOption();
 
+            //设置定位监听
+            mlocationClient.setLocationListener(this);
+            //设置定位参数
+
+            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+            mlocationClient.setLocationOption(mLocationOption);
+            // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
+            // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
+            // 在定位结束后，在合适的生命周期调用onDestroy()方法
+            // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
+            mlocationClient.startLocation();
+
+        }
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         LocationUtils.setPermission(Manifest.permission.LOCATION_HARDWARE, getContext());
+
+
         userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
         //显示的图片
         imList = new ArrayList();
@@ -130,6 +157,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
 
 
     }
+
+
+    private void requestLocationPermission() {
+        Log.e(TAG, "requestLocationPermission: " + "申请授权");
+
+        MPermissions.requestPermissions(this, 5, Manifest.permission.ACCESS_COARSE_LOCATION);
+
+    }
+
+    @PermissionGrant(5)
+    public void requestLocationSuccess() {
+
+        Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
+
+
+
+    }
+
+    @PermissionDenied(5)
+    public void requestLocationFailed() {
+        Toast.makeText(getActivity(), "授权失败", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+
 
     private void inintView(View view) {
 
@@ -212,16 +265,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
                 break;
             case R.id.day_price:
             case R.id.day_run:
-                if (userInfo.isStatus()){
+                if (userInfo.isStatus()) {
 
-                } else{
+                } else {
                     showLoadDialog();
                 }
                 break;
             case carfriend_chat:
                 startActivity(new Intent(getActivity(), ChatActivity.class));
                 break;
-            case R.id.location_text :
+            case R.id.location_text:
                 showDialogCity();
                 break;
 
@@ -229,6 +282,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
         }
 
     }
+
     /**
      * 显示dialog
      */
@@ -271,12 +325,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
 
     private void initCityView(View view) {
         MySlideView mySlideView = (MySlideView) view.findViewById(R.id.my_slide_view);
-         circleTxt = (CircleTextView) view.findViewById(R.id.my_circle_view);
-        final TextView  tvStickyHeaderView = (TextView) view.findViewById(R.id.tv_sticky_header_view);
-           recyclerView = (RecyclerView) view.findViewById(R.id.rv_sticky_example);
-         layoutManager=new LinearLayoutManager(getContext());
+        circleTxt = (CircleTextView) view.findViewById(R.id.my_circle_view);
+        final TextView tvStickyHeaderView = (TextView) view.findViewById(R.id.tv_sticky_header_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_sticky_example);
+        layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new CityAdapter(getContext(),1);
+        adapter = new CityAdapter(getContext(), 1);
         recyclerView.setAdapter(adapter);
         mySlideView.setPingyinList(pinyinList);
         adapter.refresh(cityList);
@@ -369,19 +423,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
         waveView2.cancel();
         waveView3.cancel();
 
+
     }
 
 
-
-
     @PermissionGrant(4)
-    public void requestContactSuccess() {
+    public void requestCameraSuccess() {
         startActivityForResult(new Intent(getContext(), CaptureActivity.class), REQUSECODE);
         Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
     }
 
     @PermissionDenied(4)
-    public void requestContactFailed() {
+    public void requestCameraFailed() {
         Toast.makeText(getActivity(), "授权失败", Toast.LENGTH_SHORT).show();
     }
 
@@ -416,6 +469,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
 
         scroll2Position(selectPosition);
     }
+
     private void scroll2Position(int index) {
         int firstPosition = layoutManager.findFirstVisibleItemPosition();
         int lastPosition = layoutManager.findLastVisibleItemPosition();
@@ -428,4 +482,56 @@ public class HomeFragment extends Fragment implements View.OnClickListener ,MySl
             recyclerView.scrollToPosition(index);
         }
     }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mlocationClient != null) {
+            mlocationClient.onDestroy();
+        }
+
+    }
+
+    @Override
+    public void onLocationChanged(AMapLocation aMapLocation) {
+        Log.e("lyf", "onLocationChanged: " + "1111111111111");
+        String city = aMapLocation.getCity();
+        Log.e("lyf", "onLocationChanged: " + "1111111111111"+ city);
+        mCityText.setText(city);
+        if (mListener != null && aMapLocation != null) {
+            if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
+                mListener.onLocationChanged(aMapLocation);
+                Log.e("lyf", "onLocationChanged: " + "1111111111111");
+
+            }
+        }
+    }
+
+    /**
+     * 激活定位
+     *
+     * @param onLocationChangedListener
+     */
+    @Override
+    public void activate(OnLocationChangedListener onLocationChangedListener) {
+        Log.e("lyf", "activate" + "1111111111111");
+        mListener = onLocationChangedListener;
+
+    }
+
+    /**
+     * 停止定位
+     */
+    @Override
+    public void deactivate() {
+        Log.e("lyf", "deactivate" + "1111111111111");
+        mListener = null;
+        if (mlocationClient != null) {
+            mlocationClient.stopLocation();
+            mlocationClient.onDestroy();
+        }
+        mlocationClient = null;
+    }
+
 }
