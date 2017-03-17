@@ -66,7 +66,7 @@ import static car.com.wlc.cardemo.R.id.carfriend_chat;
  * A simple {@link Fragment} subclass.
  */
 
-public class HomeFragment extends Fragment implements LocationSource, AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
+public class HomeFragment extends Fragment implements  AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
     private static HomeFragment homeFragment;
@@ -74,9 +74,6 @@ public class HomeFragment extends Fragment implements LocationSource, AMapLocati
     private int REQUSECODE = 1;
     private UserInfo userInfo;
     private ConvenientBanner mBanner;
-    private TextView mLocation;
-    private LatLng latLng = null;
-    private FloatingActionsMenu fab_menu;
     private TextView mCityText;
     private List<CitySortModel> cityList = new ArrayList<>();
     public static List<String> pinyinList = new ArrayList<>();
@@ -87,10 +84,6 @@ public class HomeFragment extends Fragment implements LocationSource, AMapLocati
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
 
-
-    private AMapLocationClient mlocationClient;
-    private OnLocationChangedListener mListener;
-    private AMapLocationClientOption mLocationOption;
 
     public static HomeFragment getInstance() {
         if (homeFragment == null) {
@@ -120,25 +113,6 @@ public class HomeFragment extends Fragment implements LocationSource, AMapLocati
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         requestLocationPermission();
-        // Inflate the layout for this fragment
-        if (mlocationClient == null) {
-            Log.e("lyf", "onCreateView: "+"1111111111111" );
-            mlocationClient = new AMapLocationClient(getActivity());
-            mLocationOption = new AMapLocationClientOption();
-
-            //设置定位监听
-            mlocationClient.setLocationListener(this);
-            //设置定位参数
-
-            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-            mlocationClient.setLocationOption(mLocationOption);
-            // 此方法为每隔固定时间会发起一次定位请求，为了减少电量消耗或网络流量消耗，
-            // 注意设置合适的定位时间的间隔（最小间隔支持为2000ms），并且在合适时间调用stopLocation()方法来取消定位请求
-            // 在定位结束后，在合适的生命周期调用onDestroy()方法
-            // 在单次定位情况下，定位无论成功与否，都无需调用stopLocation()方法移除请求，定位sdk内部会移除
-            mlocationClient.startLocation();
-
-        }
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -483,55 +457,17 @@ public class HomeFragment extends Fragment implements LocationSource, AMapLocati
         }
     }
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mlocationClient != null) {
-            mlocationClient.onDestroy();
-        }
-
-    }
-
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
-        Log.e("lyf", "onLocationChanged: " + "1111111111111");
+
         String city = aMapLocation.getCity();
-        Log.e("lyf", "onLocationChanged: " + "1111111111111"+ city);
-        mCityText.setText(city);
-        if (mListener != null && aMapLocation != null) {
-            if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
-                mListener.onLocationChanged(aMapLocation);
-                Log.e("lyf", "onLocationChanged: " + "1111111111111");
+       if (city != null){
+           mCityText.setText(city);
+       }
 
-            }
-        }
-    }
-
-    /**
-     * 激活定位
-     *
-     * @param onLocationChangedListener
-     */
-    @Override
-    public void activate(OnLocationChangedListener onLocationChangedListener) {
-        Log.e("lyf", "activate" + "1111111111111");
-        mListener = onLocationChangedListener;
 
     }
 
-    /**
-     * 停止定位
-     */
-    @Override
-    public void deactivate() {
-        Log.e("lyf", "deactivate" + "1111111111111");
-        mListener = null;
-        if (mlocationClient != null) {
-            mlocationClient.stopLocation();
-            mlocationClient.onDestroy();
-        }
-        mlocationClient = null;
-    }
+
 
 }
