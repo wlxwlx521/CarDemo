@@ -6,6 +6,137 @@
     android:background="#f1eded">
 
 
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:gravity="center">-->
+
+    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
+    <!--android:id="@+id/drawer"-->
+
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--my:content="@+id/content"-->
+    <!--my:direction="topToBottom"-->
+    <!--my:handle="@+id/handle">-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@id/content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:background="@mipmap/juchi"-->
+    <!--android:gravity="center">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
+    <!--android:gravity="center"-->
+    <!--android:text="一键救援" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
+    <!--android:gravity="center"-->
+    <!--android:text="在线报险" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<ImageView-->
+    <!--android:id="@id/handle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@mipmap/sos"-->
+
+    <!--android:translationX="160dp" />-->
+    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
+    <!--</LinearLayout><LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:gravity="center">-->
+
+    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
+    <!--android:id="@+id/drawer"-->
+
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--my:content="@+id/content"-->
+    <!--my:direction="topToBottom"-->
+    <!--my:handle="@+id/handle">-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@id/content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:background="@mipmap/juchi"-->
+    <!--android:gravity="center">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
+    <!--android:gravity="center"-->
+    <!--android:text="一键救援" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
+    <!--android:gravity="center"-->
+    <!--android:text="在线报险" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<ImageView-->
+    <!--android:id="@id/handle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@mipmap/sos"-->
+
+    <!--android:translationX="160dp" />-->
+    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
+    <!--</LinearLayout>-->
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_addButtonColorNormal="@color/white"
+        fab:fab_addButtonColorPressed="@color/white_pressed"
+        fab:fab_addButtonPlusIconColor="@color/half_black"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@mipmap/cxz_sos_help"
+            app:fab_title="一键救援"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_size="mini" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@mipmap/cxz_sos_safety"
+            app:fab_title="在线报险"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_size="mini" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
     <LinearLayout
         android:id="@+id/bootom_lin"
         android:layout_width="match_parent"
@@ -15,7 +146,6 @@
         >
         <!-- TODO: Update blank fragment layout -->
 
-
         <RelativeLayout
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -23,10 +153,7 @@
             android:layout_height="40dp"
             android:background="@android:color/white"
             >
-
-
             <TextView
-
             android:id="@+id/location_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,99 +202,11 @@
 
         </RelativeLayout>
 
-
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:background="@android:color/white"-->
-        <!--android:gravity="center">-->
-
-        <!--<TextView-->
-
-        <!--android:id="@+id/location_text"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginLeft="8dp"-->
-        <!--android:drawableRight="@mipmap/em_mm_title_right"-->
-        <!--android:text="焦作市"-->
-        <!--android:textColor="#666"-->
-        <!--android:textSize="16sp" />-->
-        <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--/>-->
-        <!--<com.miguelcatalan.materialsearchview.MaterialSearchView-->
-        <!--android:id="@+id/search_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
-        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
-        <!--&lt;!&ndash;android:id="@+id/top_layout"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginRight="40dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:orientation="horizontal">&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-
-        <!--&lt;!&ndash;android:id="@+id/location_text"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_alignParentLeft="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginLeft="8dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:drawableRight="@mipmap/em_mm_title_right"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:text="焦作市"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:textColor="#666"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:textSize="16sp" />&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
-
-        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginLeft="5dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginRight="5dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_toRightOf="@id/location_text"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:background="@drawable/search_btn">&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<EditText&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-
-        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_alignParentLeft="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginLeft="8dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:background="@null"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:editable="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:hint="请输入你查询的车辆"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:maxLines="1"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:singleLine="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:textColor="#999"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:textSize="12sp" />&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
-
-        <!--&lt;!&ndash;android:id="@+id/search_btn"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="40dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="40dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:src="@mipmap/ic_lost_find" />&ndash;&gt;-->
-        <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
-        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
-        <!--</LinearLayout>-->
-
         <!-- TODO: Update blank fragment layout -->
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
-
 
             <com.bigkoo.convenientbanner.ConvenientBanner
                 android:id="@+id/home_banner"
@@ -268,7 +307,6 @@
                     android:layout_marginTop="5dp"
                     android:background="@mipmap/price"
                     android:gravity="center">
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -276,11 +314,9 @@
                         android:layout_weight="1.8"
                         android:gravity="center"
                         android:orientation="vertical">
-
                         <TextView
                             style="@style/carStyle"
                             android:text="天天车价" />
-
                         <TextView
                             android:id="@+id/home_car_price"
                             style="@style/carStyle"
@@ -288,13 +324,11 @@
                             android:text="保值率: 4.5星"
                             android:textSize="12sp" />
                     </LinearLayout>
-
                     <car.com.wlc.cardemo.view.WaveView
                         android:id="@+id/wave2"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:layout_marginRight="10dp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -314,7 +348,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1.8"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:baselineAligned="false">
 
                         <TextView
                             style="@style/carStyle"
@@ -581,135 +615,4 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="end"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:gravity="center">-->
-
-    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
-    <!--android:id="@+id/drawer"-->
-
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--my:content="@+id/content"-->
-    <!--my:direction="topToBottom"-->
-    <!--my:handle="@+id/handle">-->
-
-    <!--<RelativeLayout-->
-    <!--android:id="@id/content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="100dp"-->
-    <!--android:background="@mipmap/juchi"-->
-    <!--android:gravity="center">-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
-    <!--android:gravity="center"-->
-    <!--android:text="一键救援" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
-    <!--android:gravity="center"-->
-    <!--android:text="在线报险" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<ImageView-->
-    <!--android:id="@id/handle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@mipmap/sos"-->
-
-    <!--android:translationX="160dp" />-->
-    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
-    <!--</LinearLayout><LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="end"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:gravity="center">-->
-
-    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
-    <!--android:id="@+id/drawer"-->
-
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--my:content="@+id/content"-->
-    <!--my:direction="topToBottom"-->
-    <!--my:handle="@+id/handle">-->
-
-    <!--<RelativeLayout-->
-    <!--android:id="@id/content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="100dp"-->
-    <!--android:background="@mipmap/juchi"-->
-    <!--android:gravity="center">-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
-    <!--android:gravity="center"-->
-    <!--android:text="一键救援" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
-    <!--android:gravity="center"-->
-    <!--android:text="在线报险" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<ImageView-->
-    <!--android:id="@id/handle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@mipmap/sos"-->
-
-    <!--android:translationX="160dp" />-->
-    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
-    <!--</LinearLayout>-->
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        app:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_addButtonColorNormal="@color/white"
-        fab:fab_addButtonColorPressed="@color/white_pressed"
-        fab:fab_addButtonPlusIconColor="@color/half_black"
-        fab:fab_addButtonSize="normal"
-        fab:fab_labelsPosition="left">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@mipmap/cxz_sos_help"
-            app:fab_title="一键救援"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/white_pressed"
-            fab:fab_size="mini" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@mipmap/cxz_sos_safety"
-            app:fab_title="在线报险"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/white_pressed"
-            fab:fab_size="mini" />
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </FrameLayout>
