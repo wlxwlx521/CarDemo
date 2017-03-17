@@ -56,7 +56,7 @@ import static car.com.wlc.cardemo.R.id.carfriend_chat;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * wlx {@link Fragment} subclass.
  */
 
 public class HomeFragment extends Fragment implements  AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
