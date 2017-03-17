@@ -17,13 +17,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.LocationSource;
+import com.amap.api.maps.model.LatLng;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -59,7 +66,7 @@ import static car.com.wlc.cardemo.R.id.carfriend_chat;
  * A simple {@link Fragment} subclass.
  */
 
-public class HomeFragment extends Fragment implements  AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
+public class HomeFragment extends Fragment implements LocationSource, AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
     private static HomeFragment homeFragment;
@@ -67,6 +74,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     private int REQUSECODE = 1;
     private UserInfo userInfo;
     private ConvenientBanner mBanner;
+    private TextView mLocation;
+    private LatLng latLng = null;
+    private FloatingActionsMenu fab_menu;
     private TextView mCityText;
     private List<CitySortModel> cityList = new ArrayList<>();
     public static List<String> pinyinList = new ArrayList<>();
@@ -77,6 +87,10 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
 
+
+    private AMapLocationClient mlocationClient;
+    private OnLocationChangedListener mListener;
+    private AMapLocationClientOption mLocationOption;
 
     public static HomeFragment getInstance() {
         if (homeFragment == null) {
@@ -106,6 +120,26 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         requestLocationPermission();
+        // Inflate the layout for this fragment
+        if (mlocationClient == null) {
+            Log.e("lyf", "onCreateView: " + "1111111111111");
+            mlocationClient = new AMapLocationClient(getActivity());
+            mLocationOption = new AMapLocationClientOption();
+
+            //设置定位监听
+            mlocationClient.setLocationListener(this);
+            //设置定位参数
+            //获取一次定位结果：
+            //该方法默认为false。
+            mLocationOption.setOnceLocation(true);
+
+            //获取最近3s内精度最高的一次定位结果：
+            //设置setOnceLocationLatest(boolean b)接口为true，启动定位时SDK会返回最近3s内精度最高的一次定位结果。如果设置其为true，setOnceLocation(boolean b)接口也会被设置为true，反之不会，默认为false。
+            mLocationOption.setOnceLocationLatest(true);
+
+            mlocationClient.startLocation();
+
+        }
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -139,7 +173,6 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
         Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
 
 
-
     }
 
     @PermissionDenied(5)
@@ -148,7 +181,6 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
 
     }
-
 
 
     private void inintView(View view) {
@@ -452,12 +484,53 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
 
     @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
+    public void onDestroy() {
+        super.onDestroy();
+        if (mlocationClient != null) {
+            mlocationClient.onDestroy();
+        }
 
+    }
+
+    @Override
+    public void onLocationChanged(AMapLocation aMapLocation) {
+        Log.e("lyf", "onLocationChanged: " + "1111111111111");
         String city = aMapLocation.getCity();
-       if (city != null){
-           mCityText.setText(city);
-       }
+        Log.e("lyf", "onLocationChanged: " + "1111111111111" + city);
+        mCityText.setText(city);
+        if (mListener != null && aMapLocation != null) {
+            if (aMapLocation != null && aMapLocation.getErrorCode() == 0) {
+                mListener.onLocationChanged(aMapLocation);
+                Log.e("lyf", "onLocationChanged: " + "1111111111111");
+
+            }
+        }
+    }
+
+    /**
+     * 激活定位
+     *
+     * @param onLocationChangedListener
+     */
+    @Override
+    public void activate(OnLocationChangedListener onLocationChangedListener) {
+        Log.e("lyf", "activate" + "1111111111111");
+        mListener = onLocationChangedListener;
+
+    }
+
+    /**
+     * 停止定位
+     */
+    @Override
+    public void deactivate() {
+        Log.e("lyf", "deactivate" + "1111111111111");
+        mListener = null;
+        if (mlocationClient != null) {
+            mlocationClient.stopLocation();
+            mlocationClient.onDestroy();
+        }
+        mlocationClient = null;
     }
 
 }
