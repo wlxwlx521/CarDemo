@@ -450,6 +450,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
         }
     }
 
+
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
 
