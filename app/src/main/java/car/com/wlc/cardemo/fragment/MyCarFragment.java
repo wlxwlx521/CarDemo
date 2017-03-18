@@ -3,11 +3,13 @@ package car.com.wlc.cardemo.fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -41,6 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import car.com.wlc.cardemo.R;
+import car.com.wlc.cardemo.activity.LoginActivity;
 import car.com.wlc.cardemo.activity.MeterActivity;
 import car.com.wlc.cardemo.activity.RecordCarActivity;
 import car.com.wlc.cardemo.adapter.MyCarAdapter;
@@ -51,6 +54,7 @@ import car.com.wlc.cardemo.utils.DatabaseOpenHelper;
 import car.com.wlc.cardemo.utils.IsNetwork;
 import car.com.wlc.cardemo.utils.JsonData;
 import car.com.wlc.cardemo.utils.SharedData;
+import car.com.wlc.cardemo.utils.ToastUtil;
 
 
 /**
@@ -75,6 +79,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     private TextView mMyCarName;
     private int i = 1;
     private boolean isFirstLoc;
+    private UserInfo userInfo;
 
     public static MyCarFragment getInstance() {
         if (myCarFragment == null) {
@@ -87,16 +92,11 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isFirstLoc = true;
-//        int i = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION);
-//        if (i != PackageManager.PERMISSION_GRANTED) {
-//
-//        }
-        if (view != null)
-
-        {
-            if (view.getParent() != null) {
+         userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
+        if (view != null){
+                if (view.getParent() != null) {
                 ((ViewGroup) view.getParent()).removeView(view);
-            }
+                }
         }
         view = inflater.inflate(R.layout.fragment_my_car, container, false);
         mMapView = (MapView) view.findViewById(R.id.map);
@@ -147,6 +147,9 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    if (!userInfo.isStatus()){
+                        showLoadDialog();
+                    }
                     Log.i("info", "onCheckedChanged: " + i);
                     mMyChoose.setVisibility(View.VISIBLE);
 
@@ -198,12 +201,29 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
 
     }
+    public void showLoadDialog() {
+        AlertDialog.Builder b = new AlertDialog.Builder(getContext());
+        b.setTitle("提示").setMessage("亲爱的用户,目前您还没有登陆，是否登录").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+                dialog.dismiss();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+            }
+        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        b.create().show();
+    }
     /**
      * 请求车辆信息
      */
     private void requestDate() {
-        UserInfo userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
+
         list = null;
         try {
             list = DatabaseOpenHelper.getInstance().findAll(VerInfoListBean.class);
