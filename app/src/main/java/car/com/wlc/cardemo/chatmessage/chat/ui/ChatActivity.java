@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import car.com.wlc.cardemo.R;
+import car.com.wlc.cardemo.fragment.MyCarFragment;
 
 /**
  * Created by wulixia on 2017/3/11.
@@ -40,7 +41,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
 
         list=new ArrayList<>();
-        list.add(ChatFragment.newInstance());
+        list.add(ChatCarFragment.newInstance());
         list.add(ChatFragment.newInstance());
         list.add(ContactFragment.newInstance());
         initView();
