@@ -51,10 +51,7 @@ import car.com.wlc.cardemo.utils.DatabaseOpenHelper;
 import car.com.wlc.cardemo.utils.IsNetwork;
 import car.com.wlc.cardemo.utils.JsonData;
 import car.com.wlc.cardemo.utils.SharedData;
-import car.com.wlc.cardemo.utils.ToastUtil;
 
-import static android.R.attr.data;
-import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -112,26 +109,17 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     }
 
     private void requestLocationPermission() {
-        Log.e(TAG, "requestLocationPermission: " + "申请授权");
-
         MPermissions.requestPermissions(this, 5, Manifest.permission.ACCESS_COARSE_LOCATION);
-
     }
 
     @PermissionGrant(5)
     public void requestContactSuccess() {
-
-
         initAMap();
-
-
     }
 
     @PermissionDenied(5)
     public void requestContactFailed() {
         Toast.makeText(getActivity(), "定位授权失败", Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override
@@ -143,7 +131,6 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     private void init() {
         initAMap();
-
         view.findViewById(R.id.my_car_navigation).setOnClickListener(this);
         mCheckCar = ((CheckBox) view.findViewById(R.id.mycar_check));
         mMyChoose = view.findViewById(R.id.my_choose);
