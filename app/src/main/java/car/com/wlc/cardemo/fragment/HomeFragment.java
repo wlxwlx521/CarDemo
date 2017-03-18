@@ -136,10 +136,6 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     @PermissionGrant(5)
     public void requestLocationSuccess() {
 
-        Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
-
-
-
     }
 
     @PermissionDenied(5)
