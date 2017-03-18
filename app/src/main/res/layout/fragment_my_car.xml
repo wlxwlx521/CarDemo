@@ -62,6 +62,7 @@
             android:src="@mipmap/cxz_mycar_menu_real_time_condition" />
 
         <LinearLayout
+            android:id="@+id/my_car_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
