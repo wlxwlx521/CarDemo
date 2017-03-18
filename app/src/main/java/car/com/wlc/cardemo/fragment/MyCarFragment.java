@@ -2,7 +2,10 @@ package car.com.wlc.cardemo.fragment;
 
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +37,7 @@ import org.xutils.ex.DbException;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import car.com.wlc.cardemo.R;
@@ -49,6 +53,7 @@ import car.com.wlc.cardemo.utils.JsonData;
 import car.com.wlc.cardemo.utils.SharedData;
 import car.com.wlc.cardemo.utils.ToastUtil;
 
+import static android.R.attr.data;
 import static android.content.ContentValues.TAG;
 
 /**
@@ -84,7 +89,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        isFirstLoc=true;
+        isFirstLoc = true;
 //        int i = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION);
 //        if (i != PackageManager.PERMISSION_GRANTED) {
 //
@@ -116,7 +121,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     @PermissionGrant(5)
     public void requestContactSuccess() {
 
-        Toast.makeText(getActivity(), "授权成功", Toast.LENGTH_SHORT).show();
+
         initAMap();
 
 
@@ -124,7 +129,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     @PermissionDenied(5)
     public void requestContactFailed() {
-        Toast.makeText(getActivity(), "授权失败", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "定位授权失败", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -138,6 +143,8 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     private void init() {
         initAMap();
+
+        view.findViewById(R.id.my_car_navigation).setOnClickListener(this);
         mCheckCar = ((CheckBox) view.findViewById(R.id.mycar_check));
         mMyChoose = view.findViewById(R.id.my_choose);
         mRecycler = ((RecyclerView) view.findViewById(R.id.mycar_recyler));
@@ -295,7 +302,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     isFirstLoc = false;
                 }
             } else {
-               // ToastUtil.toastUtils(getContext(), aMapLocation.getErrorInfo());
+                // ToastUtil.toastUtils(getContext(), aMapLocation.getErrorInfo());
 
             }
         }
@@ -382,6 +389,16 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
             case R.id.mycar_menu:
                 startActivity(new Intent(getContext(), MeterActivity.class));
                 break;
+            case R.id.my_car_navigation:
+                if (isAvilible(getActivity(), "com.autonavi.minimap")) {
+                    Intent intent = new Intent("android.intent.action.VIEW",
+                            android.net.Uri.parse("androidamap://showTraffic?sourceApplication=softname&amp;poiid=BGVIS1&amp;lat=36.2&amp;lon=116.1&amp;level=10&amp;dev=0"));
+                    intent.setPackage("com.autonavi.minimap");
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "检测到您没有安装高德地图应用，请先去下载安装", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 
@@ -390,6 +407,32 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    /**
+     * 检查手机上是否安装了指定的软件
+     *
+     * @param context
+     * @param packageName：应用包名
+     * @return
+     */
+    private boolean isAvilible(Context context, String packageName) {
+        //获取packagemanager
+        final PackageManager packageManager = context.getPackageManager();
+        //获取所有已安装程序的包信息
+        List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
+        //用于存储所有已安装程序的包名
+        List<String> packageNames = new ArrayList<String>();
+        //从pinfo中将包名字逐一取出，压入pName list中
+        if (packageInfos != null) {
+            for (int i = 0; i < packageInfos.size(); i++) {
+                String packName = packageInfos.get(i).packageName;
+                packageNames.add(packName);
+            }
+        }
+        //判断packageNames中是否有目标程序的包名，有TRUE，没有FALSE
+        return packageNames.contains(packageName);
+    }
+
 }
 
 
