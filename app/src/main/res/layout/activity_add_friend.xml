@@ -7,21 +7,44 @@
     android:orientation="vertical"
     tools:context="car.com.wlc.cardemo.chatmessage.chat.ui.AddFriendActivity">
     <RadioGroup
+        android:id="@+id/btn_gruop"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RadioButton
             android:text="用户名"
+            android:id="@+id/btn_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <RadioButton
+            android:id="@+id/btn_userc"
             android:text="车牌号"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RadioGroup>
-   <EditText
-       android:layout_margin="10dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/search_people"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_lost_find"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <EditText
+            android:layout_toLeftOf="@id/search_people"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/text_search_message"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

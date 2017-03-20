@@ -3,6 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 <include
@@ -17,10 +18,11 @@
     </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.TabLayout
+        android:scrollbars="none"
+        app:tabSelectedTextColor="@color/textcolor"
         android:id="@+id/tab_layout"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-
     </android.support.design.widget.TabLayout>
 </LinearLayout>
