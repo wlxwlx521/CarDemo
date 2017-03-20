@@ -17,10 +17,20 @@ import com.amap.api.maps.AMapOptions;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 
-import java.lang.ref.Reference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import car.com.wlc.cardemo.R;
+import car.com.wlc.cardemo.utils.AMapUtil;
+
+import static android.R.id.list;
+
 
 /**
  * Created by Administrator on 2017/3/18.
@@ -34,6 +44,7 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
     private boolean isFirstLoc;
+    private List<LatLng> mLatList;
 
     public static ChatCarFragment newInstance() {
 
@@ -80,10 +91,27 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
         //使用 aMap.setMapTextZIndex(2) 可以将地图底图文字设置在添加的覆盖物之上
         aMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         aMap.getUiSettings().setZoomPosition(AMapOptions.ZOOM_POSITION_RIGHT_CENTER);
-
+//        mLatList =new ArrayList<>();
+//
+//        mLatList.add(new LatLng(113.251863,35.21545));
+//        mLatList.add(new LatLng(113.260595,35.2198));
+//        mLatList.add(new LatLng(113.258942,35.219225));
+        setfromandtoMarker();
 
     }
+    private void setfromandtoMarker() {
+       aMap.addMarker(new MarkerOptions()
+                .position(new LatLng(113.251863,35.21545))
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
 
+        aMap.addMarker(new MarkerOptions()
+                .position(new LatLng(113.260595,35.2198))
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
+        aMap.addMarker(new MarkerOptions()
+                .position(new LatLng(113.258942,35.219225))
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
+
+    }
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (mListener != null && aMapLocation != null) {

@@ -63,6 +63,10 @@ public class ContactFragment extends Fragment {
         });
 
     }
+
+    /**
+     * 初始化一些聊天联系人
+     */
     private void initUsers() {
         //User id
         int myId = 0;

@@ -23,7 +23,7 @@ import car.com.wlc.cardemo.chatmessage.chat.views.ChatView;
 
 
 /**
- * Simple chat example activity
+ *
  * Created by wulixia on 2017/3/10.
  */
 public class MessengerActivity extends Activity {
@@ -54,11 +54,11 @@ public class MessengerActivity extends Activity {
         mChatView.setUsernameTextColor(ContextCompat.getColor(this, R.color.blueGray500));
         mChatView.setSendTimeTextColor(ContextCompat.getColor(this, R.color.blueGray500));
         mChatView.setDateSeparatorColor(ContextCompat.getColor(this, R.color.blueGray500));
-        mChatView.setInputTextHint("new message...");
+        mChatView.setInputTextHint("请输入...");
         mChatView.setMessageMarginTop(5);
         mChatView.setMessageMarginBottom(5);
 
-        //Click Send Button
+        //发送按钮点击事件
         mChatView.setOnClickSendButtonListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,9 +88,6 @@ public class MessengerActivity extends Activity {
 
                 //Ignore hey
                 if (!message.getMessageText().contains("hey")) {
-                    //talkContent
-                    String talk = "车马炮欢迎你的加入！";
-
                     messageStatus = new Random().nextInt(4);
                     //Receive message
                     final Message receivedMessage = new Message.Builder()
