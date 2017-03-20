@@ -215,6 +215,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     }
                 } else {
                     //定位人
+
                     Log.e("lyf", "onCheckedChanged: flase");
 
                     aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
