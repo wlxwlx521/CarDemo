@@ -7,7 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +31,16 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
+import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptor;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
@@ -41,6 +52,7 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import car.com.wlc.cardemo.R;
 import car.com.wlc.cardemo.activity.LoginActivity;
@@ -55,6 +67,8 @@ import car.com.wlc.cardemo.utils.IsNetwork;
 import car.com.wlc.cardemo.utils.JsonData;
 import car.com.wlc.cardemo.utils.SharedData;
 import car.com.wlc.cardemo.utils.ToastUtil;
+
+import static java.lang.Integer.getInteger;
 
 
 /**
@@ -80,6 +94,14 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     private int i = 1;
     private boolean isFirstLoc;
     private UserInfo userInfo;
+    private Marker marker;
+    private CheckBox pc_checkBox;
+    private Double longitude;
+    private Double latitude;
+    private MyLocationStyle myLocationStyle;
+    private double plongitude;
+    private double platitude;
+
 
     public static MyCarFragment getInstance() {
         if (myCarFragment == null) {
@@ -92,11 +114,18 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isFirstLoc = true;
-         userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
-        if (view != null){
-                if (view.getParent() != null) {
+        userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
+
+//        int i = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION);
+//        if (i != PackageManager.PERMISSION_GRANTED) {
+//
+//        }
+        if (view != null)
+
+        {
+            if (view.getParent() != null) {
                 ((ViewGroup) view.getParent()).removeView(view);
-                }
+            }
         }
         view = inflater.inflate(R.layout.fragment_my_car, container, false);
         mMapView = (MapView) view.findViewById(R.id.map);
@@ -131,6 +160,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
     private void init() {
         initAMap();
+
         view.findViewById(R.id.my_car_navigation).setOnClickListener(this);
         mCheckCar = ((CheckBox) view.findViewById(R.id.mycar_check));
         mMyChoose = view.findViewById(R.id.my_choose);
@@ -147,7 +177,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    if (!userInfo.isStatus()){
+                    if (!userInfo.isStatus()) {
                         showLoadDialog();
                     }
                     Log.i("info", "onCheckedChanged: " + i);
@@ -167,6 +197,32 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                 showMyCarName(idName, no);
             }
         });
+        pc_checkBox = (CheckBox) view.findViewById(R.id.my_car_checkBox);
+
+        pc_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    //定位车
+
+                    Log.e("lyf", "onCheckedChanged: true" + latitude + longitude);
+                    //113.247757,35.207535
+//                    LatLng latLng = new LatLng(39.906901,116.397972);
+//                    marker = aMap.addMarker(new MarkerOptions().position(latLng).title("北京").snippet("DefaultMarker"));
+                    // 设置当前地图显示为当前位置
+                    if (latitude != null && longitude != null) {
+                        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 19));
+                    }
+                } else {
+                    //定位人
+                    Log.e("lyf", "onCheckedChanged: flase");
+
+                    aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
+
+
+                }
+            }
+        });
     }
 
     private void initAMap() {
@@ -177,6 +233,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
             aMap.setLocationSource(this);
             aMap.setMyLocationEnabled(true);
             aMap = mMapView.getMap();
+
         }
         initMap();
     }
@@ -196,11 +253,19 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
         aMap.getUiSettings().setMyLocationButtonEnabled(false);// 设置默认定位按钮是否显示
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         //使用 aMap.setMapTextZIndex(2) 可以将地图底图文字设置在添加的覆盖物之上
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(19));
         aMap.getUiSettings().setZoomPosition(AMapOptions.ZOOM_POSITION_RIGHT_CENTER);
+        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类
+        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.plocation)));
+        myLocationStyle.strokeColor(Color.argb(0, 0, 0, 0));// 设置圆形的边框颜色
+        myLocationStyle.radiusFillColor(Color.argb(0, 0, 0, 0));// 设置圆形的填充颜色
+        aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
+        //aMap.getUiSettings().setMyLocationButtonEnabled(true);设置默认定位按钮是否显示，非必需设置。
+        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
 
 
     }
+
     public void showLoadDialog() {
         AlertDialog.Builder b = new AlertDialog.Builder(getContext());
         b.setTitle("提示").setMessage("亲爱的用户,目前您还没有登陆，是否登录").setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -219,11 +284,12 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
         });
         b.create().show();
     }
+
     /**
      * 请求车辆信息
      */
     private void requestDate() {
-
+        UserInfo userInfo = SharedData.getData(getContext()).get(Contact.USERINFO);
         list = null;
         try {
             list = DatabaseOpenHelper.getInstance().findAll(VerInfoListBean.class);
@@ -256,6 +322,25 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                             DatabaseOpenHelper.getInstance().save(bean);
 
                             // mMyChoose.setVisibility(View.VISIBLE);
+                            for (VerInfoListBean ver : list) {
+
+                                if (ver.getIsBind() == 1) {
+                                    Log.e("lyf", "onSuccess: " + ver.getLongitude() + ver.getLatitude());
+                                    longitude = Double.valueOf(ver.getLongitude());
+
+                                    latitude = Double.valueOf(ver.getLatitude());
+
+                                    MarkerOptions markerOptions = new MarkerOptions();
+                                    markerOptions.position(new LatLng(latitude, longitude));
+                                    markerOptions.title("车");
+                                    markerOptions.visible(true);
+                                    BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.map_car));
+                                    markerOptions.icon(bitmapDescriptor);
+                                    aMap.addMarker(markerOptions);
+
+
+                                }
+                            }
 
                         } catch (DbException e) {
                             e.printStackTrace();
@@ -290,6 +375,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
         }
     }
 
+
     /**
      * 定位成功后回调函数
      *
@@ -305,7 +391,8 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                 if (isFirstLoc) {
                     //设置缩放级别
                     aMap.moveCamera(CameraUpdateFactory.zoomTo(17));
-
+                    plongitude = aMapLocation.getLongitude();
+                    platitude = aMapLocation.getLatitude();
                     isFirstLoc = false;
                 }
             } else {
