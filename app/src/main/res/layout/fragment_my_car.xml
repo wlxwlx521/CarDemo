@@ -4,55 +4,61 @@
     android:layout_height="match_parent"
     tools:context="car.com.wlc.cardemo.fragment.MyCarFragment">
 
-   <com.amap.api.maps.MapView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.amap.api.maps.MapView>
+
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.amap.api.maps.MapView>
+
+
 
     <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:background="@android:color/white"
             android:id="@+id/my_linear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
             <CheckBox
-                android:checked="false"
                 android:id="@+id/mycar_check"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:button="@null"
+                android:checked="false"
                 android:drawableLeft="@mipmap/cxz_common_multicar"
                 android:drawablePadding="15dp"
                 android:text="我的车辆"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <View
-            android:layout_below="@id/my_linear"
-            android:background="@color/btnChooseColor"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp"
+            android:layout_below="@id/my_linear"
+            android:background="@color/btnChooseColor" />
 
         <LinearLayout
-            android:orientation="vertical"
-            android:visibility="gone"
             android:id="@+id/my_choose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/my_linear"
-            android:background="#999">
+            android:background="#999"
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/mycar_recyler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
+
         <ImageView
             android:id="@+id/mycar_menu"
             android:layout_width="wrap_content"
@@ -66,7 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/set_background">
+            android:background="@drawable/set_background"
+            android:id="@+id/linearLayout">
 
             <TextView
                 android:id="@+id/my_car_navigation"
@@ -98,18 +105,32 @@
                 android:background="@color/colorTextde" />
 
             <Button
-                android:background="@null"
                 android:id="@+id/record_car"
-                android:layout_marginBottom="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
+                android:background="@null"
                 android:drawableTop="@mipmap/cxz_common_travel"
                 android:gravity="center"
                 android:text="行车记录"
                 android:textColor="#5CA946" />
 
         </LinearLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/map_checkbox_selector"
+            android:button="@null"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="29dp"
+            android:id="@+id/my_car_checkBox"
+            android:checked="false"/>
     </RelativeLayout>
 
 </FrameLayout>
