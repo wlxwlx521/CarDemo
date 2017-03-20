@@ -179,6 +179,8 @@ public class JsonData {
                     listBean.setPicture(ob.getString("picture"));
                     listBean.setObjId(ob.getString("objId"));
                     listBean.setIsBind(ob.getInt("isBind"));
+                    listBean.setLongitude(ob.getString("longitude"));
+                    listBean.setLatitude(ob.getString("latitude"));
                     mList.add(listBean);
                 }
             }
