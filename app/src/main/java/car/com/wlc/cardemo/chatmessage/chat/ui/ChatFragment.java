@@ -50,6 +50,9 @@ public class ChatFragment extends Fragment {
 
     }
 
+    /**
+     * 初始化一些聊天用户
+     */
     private void initUsers() {
         //User id
         int myId = 0;
