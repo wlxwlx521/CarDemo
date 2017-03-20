@@ -15,7 +15,7 @@ public class VerInfoListBean implements Serializable {
     @Column(name = "productId")
     private String productId;
     private String currentKm;
-   private int totalRecordNum;
+    private int totalRecordNum;
     private String seriesName;
     private int isBind;
 
@@ -51,33 +51,6 @@ public class VerInfoListBean implements Serializable {
         this.currentKm = currentKm;
     }
 
-    @Override
-    public String toString() {
-        return "VerInfoListBean{" +
-                "brandId='" + brandId + '\'' +
-                ", productId='" + productId + '\'' +
-                ", transmissionType=" + transmissionType +
-                ", resultNote='" + resultNote + '\'' +
-                ", objId='" + objId + '\'' +
-                ", idName='" + idName + '\'' +
-                ", brandName='" + brandName + '\'' +
-                ", productName='" + productName + '\'' +
-                ", color='" + color + '\'' +
-                ", licensePlateNo='" + licensePlateNo + '\'' +
-                ", displacement='" + displacement + '\'' +
-                ", fuelType='" + fuelType + '\'' +
-                ", emissionStd=" + emissionStd +
-                ", vehicleType='" + vehicleType + '\'' +
-                ", owner='" + owner + '\'' +
-                ", ownerTelephone='" + ownerTelephone + '\'' +
-                ", serviceType=" + serviceType +
-                ", vin='" + vin + '\'' +
-                ", picture='" + picture + '\'' +
-                ", registAgency='" + registAgency + '\'' +
-                ", produceTime='" + produceTime + '\'' +
-                ", registTime='" + registTime + '\'' +
-                '}';
-    }
 
     @Column(name = "transmissionType")
     private int transmissionType;
@@ -94,7 +67,7 @@ public class VerInfoListBean implements Serializable {
     @Column(name = "resultNote")
     private String resultNote;
 
-    @Column(name = "objId" ,isId = true)
+    @Column(name = "objId", isId = true)
     private String objId;
 
     public String getObjId() {
@@ -104,6 +77,7 @@ public class VerInfoListBean implements Serializable {
     public void setObjId(String objId) {
         this.objId = objId;
     }
+
     //车辆别名
     @Column(name = "idName")
     private String idName;
@@ -141,7 +115,7 @@ public class VerInfoListBean implements Serializable {
     private int serviceType;
     //车架号
     @Column(name = "vin")
-    private  String vin;
+    private String vin;
     //车辆照片
     @Column(name = "picture")
     private String picture;
@@ -154,6 +128,35 @@ public class VerInfoListBean implements Serializable {
     //注册时间
     @Column(name = "registTime")
     private String registTime;
+
+
+    //经度
+
+    @Column(name = "longitude")
+    private String longitude;
+
+    //维度
+    @Column(name = "latitude")
+    private String latitude;
+
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
 
     public String getRegistTime() {
         return registTime;
@@ -298,6 +301,7 @@ public class VerInfoListBean implements Serializable {
     public void setRegistAgency(String registAgency) {
         this.registAgency = registAgency;
     }
+
     public String getBrandId() {
         return brandId;
     }
@@ -312,5 +316,39 @@ public class VerInfoListBean implements Serializable {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    @Override
+    public String toString() {
+        return "VerInfoListBean{" +
+                "brandId='" + brandId + '\'' +
+                ", productId='" + productId + '\'' +
+                ", currentKm='" + currentKm + '\'' +
+                ", totalRecordNum=" + totalRecordNum +
+                ", seriesName='" + seriesName + '\'' +
+                ", isBind=" + isBind +
+                ", transmissionType=" + transmissionType +
+                ", resultNote='" + resultNote + '\'' +
+                ", objId='" + objId + '\'' +
+                ", idName='" + idName + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", productName='" + productName + '\'' +
+                ", color='" + color + '\'' +
+                ", licensePlateNo='" + licensePlateNo + '\'' +
+                ", displacement='" + displacement + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", emissionStd=" + emissionStd +
+                ", vehicleType='" + vehicleType + '\'' +
+                ", owner='" + owner + '\'' +
+                ", ownerTelephone='" + ownerTelephone + '\'' +
+                ", serviceType=" + serviceType +
+                ", vin='" + vin + '\'' +
+                ", picture='" + picture + '\'' +
+                ", registAgency='" + registAgency + '\'' +
+                ", produceTime='" + produceTime + '\'' +
+                ", registTime='" + registTime + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                '}';
     }
 }
