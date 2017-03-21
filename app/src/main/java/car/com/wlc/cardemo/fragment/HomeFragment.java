@@ -237,11 +237,8 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
                 String[] strings = {Manifest.permission.CAMERA};
                 MPermissions.requestPermissions(this, 4, Manifest.permission.CAMERA);
-
-
                 break;
             case R.id.car_shop_layout:
-
                 // startActivity(new Intent(getContext(), CarShopActivity.class));
                 startActivity(new Intent(getContext(), ShopActivity.class));
                 break;

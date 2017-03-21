@@ -1,5 +1,9 @@
 package car.com.wlc.cardemo.chatmessage.chat.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +28,11 @@ import car.com.wlc.cardemo.chatmessage.chat.views.adapters.MyAdapter;
 public class ChatFragment extends Fragment {
     private ListView mLv;
     private List<User> list;
-    private String TAG = "123";
+    private MyAdapter myAdapter;
 
     public static ChatFragment newInstance() {
 
-        Bundle args = new Bundle();
+
 
         ChatFragment fragment = new ChatFragment();
         //   fragment.setArguments(args);
@@ -46,7 +50,9 @@ public class ChatFragment extends Fragment {
         mLv = ((ListView) view.findViewById(R.id.list_view));
         list = new ArrayList<>();
         initUsers();
-        mLv.setAdapter(new MyAdapter(getContext(), list, 0));
+         myAdapter = new MyAdapter(getContext(), 0);
+        mLv.setAdapter(myAdapter);
+        myAdapter.refreshDate(list);
 
     }
 
@@ -71,4 +77,8 @@ public class ChatFragment extends Fragment {
         list.add(you);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

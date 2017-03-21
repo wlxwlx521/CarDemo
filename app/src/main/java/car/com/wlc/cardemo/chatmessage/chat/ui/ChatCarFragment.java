@@ -1,5 +1,7 @@
 package car.com.wlc.cardemo.chatmessage.chat.ui;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,14 +23,19 @@ import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.MyLocationStyle;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 import car.com.wlc.cardemo.R;
+import car.com.wlc.cardemo.chatmessage.chat.models.User;
 import car.com.wlc.cardemo.utils.AMapUtil;
 
+import static android.R.attr.fragment;
+import static android.R.attr.thickness;
 import static android.R.id.list;
 
 
@@ -36,7 +43,7 @@ import static android.R.id.list;
  * Created by Administrator on 2017/3/18.
  */
 
-public class ChatCarFragment extends Fragment implements AMapLocationListener,LocationSource{
+public class ChatCarFragment extends Fragment implements AMapLocationListener,LocationSource,AMap.OnMarkerClickListener{
     private View view;
     private MapView mapView;
     private AMap aMap;
@@ -44,17 +51,14 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
     private boolean isFirstLoc;
-    private List<LatLng> mLatList;
+    private static ChatCarFragment fragment;
 
     public static ChatCarFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        ChatCarFragment fragment = new ChatCarFragment();
-        fragment.setArguments(args);
+        if (fragment ==null){
+            fragment = new ChatCarFragment();
+        }
         return fragment;
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,24 +95,25 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
         //使用 aMap.setMapTextZIndex(2) 可以将地图底图文字设置在添加的覆盖物之上
         aMap.moveCamera(CameraUpdateFactory.zoomTo(16));
         aMap.getUiSettings().setZoomPosition(AMapOptions.ZOOM_POSITION_RIGHT_CENTER);
-//        mLatList =new ArrayList<>();
+        MyLocationStyle style = new MyLocationStyle();
+
+            style.strokeColor(Color.argb(0,0,0,0));
+        style.radiusFillColor(Color.argb(0, 0, 0, 0));// 设置圆形的填充颜色
+        aMap.setMyLocationStyle(style);//设置定位蓝点的Style
 //
-//        mLatList.add(new LatLng(113.251863,35.21545));
-//        mLatList.add(new LatLng(113.260595,35.2198));
-//        mLatList.add(new LatLng(113.258942,35.219225));
         setfromandtoMarker();
 
     }
     private void setfromandtoMarker() {
-       aMap.addMarker(new MarkerOptions()
-                .position(new LatLng(113.251863,35.21545))
+       aMap.addMarker(new MarkerOptions().title("车马炮")
+                .position(new LatLng(35.21545,113.251863)).visible(true)
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
 
-        aMap.addMarker(new MarkerOptions()
-                .position(new LatLng(113.260595,35.2198))
+        aMap.addMarker(new MarkerOptions().title("车马炮").visible(true)
+                .position(new LatLng(35.2198,113.260595))
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
-        aMap.addMarker(new MarkerOptions()
-                .position(new LatLng(113.258942,35.219225))
+        aMap.addMarker(new MarkerOptions().title("车马炮").visible(true)
+                .position(new LatLng(35.219225,113.258942))
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.map_car)));
 
     }
@@ -184,4 +189,11 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
         deactivate();
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Intent intent = new Intent(getContext(), MessengerActivity.class);
+        intent.putExtra("user",new User(0,"车马炮",R.mipmap.usercenter_demo_headimage));
+        startActivity(new Intent(getContext(),MessengerActivity.class));
+        return false;
+    }
 }

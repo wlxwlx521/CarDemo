@@ -1,16 +1,19 @@
 package car.com.wlc.cardemo.chatmessage.chat.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TooManyListenersException;
 
 import car.com.wlc.cardemo.R;
 import car.com.wlc.cardemo.chatmessage.chat.models.Message;
@@ -20,6 +23,8 @@ import car.com.wlc.cardemo.chatmessage.chat.utils.ChatBot;
 import car.com.wlc.cardemo.chatmessage.chat.utils.MessageList;
 import car.com.wlc.cardemo.chatmessage.chat.utils.MyMessageStatusFormatter;
 import car.com.wlc.cardemo.chatmessage.chat.views.ChatView;
+
+import static android.R.attr.id;
 
 
 /**
@@ -32,7 +37,6 @@ public class MessengerActivity extends Activity {
     private MessageList mMessageList;
     private ArrayList<User> mUsers;
     private User me;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +46,24 @@ public class MessengerActivity extends Activity {
         initUsers();
 
         mChatView = (ChatView) findViewById(R.id.chat_view);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolBar_layout);
+        toolbar.setTitle("聊天");
+        toolbar.setNavigationIcon(R.mipmap.iapppay_title_button_back_on);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                //发送广播
+                Intent intent = new Intent("car.com.wlc.cardemo.chatmessage.chat.ui.MessengerActivity");
+
+                intent.putExtra("user",me);
+                sendBroadcast(intent);
+
+                finish();
+
+
+            }
+        });
         //Set UI parameters if you need
         mChatView.setRightBubbleColor(ContextCompat.getColor(this, R.color.blue500));
         mChatView.setLeftBubbleColor(ContextCompat.getColor(this, R.color.gray300));
@@ -125,14 +146,20 @@ public class MessengerActivity extends Activity {
 
     private void initUsers() {
         mUsers = new ArrayList<>();
-        mUsers.add(me);
+        if (me!=null){
+            mUsers.add(me);
+        }else {
+            int yourId = 1;
+            int yourIcon =  R.mipmap.robot;
+            String yourName = "Robot";
+            mUsers.add(new  User(yourId, yourName, yourIcon));
+        }
+
 
         int yourId = 1;
         int yourIcon =  R.mipmap.robot;
         String yourName = "Robot";
-
-//        final UserInfo me = new UserInfo(myId, myName, myIcon);
-        final User you = new User(yourId, yourName, yourIcon);
+        User you = new User(yourId, yourName, yourIcon);
         mUsers.add(you);
     }
 
@@ -181,4 +208,13 @@ public class MessengerActivity extends Activity {
         AppData.putMessageList(this, mMessageList);
     }
 
+    /**
+     * 重写返回键
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+     //发送广播
+        sendBroadcast(new Intent("car.com.wlc.cardemo.chatmessage.chat.ui.MessengerActivity"));
+    }
 }

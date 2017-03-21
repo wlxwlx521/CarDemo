@@ -1,8 +1,13 @@
 package car.com.wlc.cardemo.chatmessage.chat.ui;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,14 +17,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import junit.framework.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 import car.com.wlc.cardemo.R;
-import car.com.wlc.cardemo.fragment.MyCarFragment;
+import car.com.wlc.cardemo.chatmessage.chat.views.IndexViewPager;
+
 
 /**
  * Created by wulixia on 2017/3/11.
@@ -27,25 +36,42 @@ import car.com.wlc.cardemo.fragment.MyCarFragment;
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<Fragment> list;
-    private ViewPager mVp;
+    private IndexViewPager mVp;
     private TabLayout mTab;
     private String title[]={"附近","聊天" ,"好友"};
-    private View layout;
     private TextView mTilte;
     private ImageView mImaAdd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //注册广播
+        registerBoradcastReceiver();
         setContentView(R.layout.activity_chatmain);
-
-
         list=new ArrayList<>();
         list.add(ChatCarFragment.newInstance());
         list.add(ChatFragment.newInstance());
         list.add(ContactFragment.newInstance());
         initView();
+    }
 
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            mVp.setCurrentItem(1);
+        }
+
+    };
+    private void registerBoradcastReceiver() {
+        IntentFilter myIntentFilter = new IntentFilter();
+        myIntentFilter.addAction("car.com.wlc.cardemo.chatmessage.chat.ui.MessengerActivity");
+        //注册广播
+        registerReceiver(mBroadcastReceiver, myIntentFilter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mBroadcastReceiver);
     }
 
     private void initView() {
@@ -53,7 +79,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         mTilte = ((TextView) findViewById(R.id.vehilce_title));
         mImaAdd = ((ImageView) findViewById(R.id.add_friend));
         mImaAdd.setOnClickListener(this);
-        mVp = ((ViewPager) findViewById(R.id.view_pager));
+        mVp = ((IndexViewPager) findViewById(R.id.view_pager));
+        mVp.setScanScroll(false);
         mTab = ((TabLayout) findViewById(R.id.tab_layout));
         mVp.setAdapter(new MyAdapter(getSupportFragmentManager()));
         mTab.setupWithViewPager(mVp);

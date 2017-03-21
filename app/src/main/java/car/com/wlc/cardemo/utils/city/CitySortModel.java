@@ -3,19 +3,6 @@ package car.com.wlc.cardemo.utils.city;
 import java.io.Serializable;
 
 public class CitySortModel implements Serializable {
-    @Override
-    public String toString() {
-        return "CitySortModel{" +
-                "cityPinyin='" + cityPinyin + '\'' +
-                ", cityName='" + cityName + '\'' +
-                ", firstPinYin='" + firstPinYin + '\'' +
-                ", logopath='" + logopath + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", displacementList='" + displacementList + '\'' +
-                ", id='" + id + '\'' +
-                ", transmissionType=" + transmissionType +
-                '}';
-    }
 
     private String cityPinyin;
     private String cityName;
