@@ -13,7 +13,7 @@
         app:civ_border_width="2dp"
         app:civ_border_color="#d7cfcf"/>
 <TextView
-    android:text="你好"
+    android:text="你好!车马炮欢迎你的加入"
     android:id="@+id/text_content"
     android:layout_centerInParent="true"
     android:layout_toRightOf="@id/profile_image"
