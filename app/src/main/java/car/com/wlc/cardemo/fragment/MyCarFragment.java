@@ -101,6 +101,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
     private MyLocationStyle myLocationStyle;
     private double plongitude;
     private double platitude;
+    private MarkerOptions markerOptions;
 
 
     public static MyCarFragment getInstance() {
@@ -212,12 +213,16 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     // 设置当前地图显示为当前位置
                     if (latitude != null && longitude != null) {
                         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 19));
+                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+                        Marker marker = mapScreenMarkers.get(1);
+                        marker.setVisible(true);
                     }
                 } else {
                     //定位人
 
-                    Log.e("lyf", "onCheckedChanged: flase");
-
+                    List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+                    Marker marker = mapScreenMarkers.get(1);
+                    marker.setVisible(false);
                     aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
 
 
@@ -331,7 +336,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
                                     latitude = Double.valueOf(ver.getLatitude());
 
-                                    MarkerOptions markerOptions = new MarkerOptions();
+                                     markerOptions = new MarkerOptions();
                                     markerOptions.position(new LatLng(latitude, longitude));
                                     markerOptions.title("车");
                                     markerOptions.visible(true);
