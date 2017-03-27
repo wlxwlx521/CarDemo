@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,20 +27,24 @@ import car.com.wlc.cardemo.chatmessage.chat.ui.MessengerActivity;
 
 public class MyAdapter extends BaseAdapter {
     private final LayoutInflater inflater;
-    private List<User> list;
+    private List<User> list=null;
     private Context context;
     private int type;
 
-    public MyAdapter(Context context, List<User> list, int type) {
+    public MyAdapter(Context context,  int type) {
         this.context = context;
         this.type = type;
-        this.list = list;
+        list=new ArrayList<>();
         inflater = LayoutInflater.from(context);
     }
 
+    public void refreshDate(List<User> mlist){
+        list.addAll(mlist);
+       notifyDataSetChanged();
+    }
     @Override
     public int getCount() {
-        return list.size();
+        return list!=null?list.size():0;
     }
 
     @Override

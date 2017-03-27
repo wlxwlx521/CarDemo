@@ -126,7 +126,7 @@ public class RadarView extends View implements Runnable {
         int pointY = height/2;
         RectF rectf = new RectF(outArcwidth/2,outArcwidth/2,width-outArcwidth/2,height-outArcwidth/2);
         //outArcSweepGradient = new SweepGradient(0,0,getResources().getColor(R.color.start_color),getResources().getColor(R.color.end_color));
-        outArcSweepGradient = new SweepGradient(pointX,pointY,Color.WHITE,Color.WHITE);
+        outArcSweepGradient = new SweepGradient(pointX,pointY,Color.parseColor("#a6d7b3"),Color.parseColor("#a6d7b3"));
         outArcPaint.setShader(outArcSweepGradient);
         canvas.drawArc(rectf,startAngle,180,false,outArcPaint);
         //1.画圆

@@ -3,6 +3,7 @@ package car.com.wlc.cardemo.chatmessage.chat.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class ContactFragment extends Fragment {
 
     private ListView mLv;
     private List<User> list;
+    private MyAdapter myAdapter;
 
     public static ContactFragment newInstance() {
         
@@ -38,8 +40,6 @@ public class ContactFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,7 +51,9 @@ public class ContactFragment extends Fragment {
         mLv = ((ListView) view.findViewById(R.id.list_view));
         list=new ArrayList<>();
         initUsers();
-        mLv.setAdapter(new MyAdapter(getContext(),list,1));
+        myAdapter = new MyAdapter(getContext(),1);
+        mLv.setAdapter(myAdapter);
+        myAdapter.refreshDate(list);
         mLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

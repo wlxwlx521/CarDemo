@@ -9,13 +9,13 @@
 <include
 
     layout="@layout/chattitle_layout"/>
-    <android.support.v4.view.ViewPager
+    <car.com.wlc.cardemo.chatmessage.chat.views.IndexViewPager
         android:id="@+id/view_pager"
         android:layout_weight="8"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-    </android.support.v4.view.ViewPager>
+    </car.com.wlc.cardemo.chatmessage.chat.views.IndexViewPager>
 
     <android.support.design.widget.TabLayout
         android:scrollbars="none"
