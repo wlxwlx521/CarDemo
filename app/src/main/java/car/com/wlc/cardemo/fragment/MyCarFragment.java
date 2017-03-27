@@ -206,17 +206,22 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     // 设置当前地图显示为当前位置
                     if (latitude != null && longitude != null) {
                         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 19));
+                        Log.e("lyf", "onCheckedChanged: "+latitude+";"+longitude );
+
+//
+//                        try {
+//                            Thread.sleep(100);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+//                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
+//                        Marker marker = mapScreenMarkers.get(1);
+//                        marker.setVisible(true);
 
 
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
-                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
-                        Marker marker = mapScreenMarkers.get(1);
-                        marker.setVisible(true);
+
+
 
                     }
                 } else {
@@ -226,16 +231,16 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
 
 
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
-
-                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
-                        Marker marker = mapScreenMarkers.get(1);
-                        marker.setVisible(false);
+//                        try {
+//                            Thread.sleep(100);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+//
+//                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
+//                        Marker marker = mapScreenMarkers.get(1);
+//                        marker.setVisible(false);
                     }
                 }
             }
@@ -324,6 +329,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     Log.i("info", "result " + result);
                     list = JsonData.getVehicleInfoList(result);
 
+
                     VerInfoListBean bean = list.get(0);
 
                     if (bean.getResultNote().equals("Success")) {
@@ -365,6 +371,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
                     } else {
                         Log.i("info", "onSuccess: 111");
+                        showLoadDialog();
                     }
                 }
 

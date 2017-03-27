@@ -11,12 +11,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -26,6 +29,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -51,12 +55,14 @@ import car.com.wlc.cardemo.utils.city.CircleTextView;
 import car.com.wlc.cardemo.utils.city.CitySortModel;
 import car.com.wlc.cardemo.utils.city.PinyinComparator;
 import car.com.wlc.cardemo.utils.city.PinyinUtils;
+import car.com.wlc.cardemo.view.FloatView;
 import car.com.wlc.cardemo.view.LocalImageHolderView;
 import car.com.wlc.cardemo.view.WaveView;
 import car.com.wlc.cardemo.view.cityview.MySlideView;
 import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
 
 import static android.content.ContentValues.TAG;
+import static car.com.wlc.cardemo.R.id.car_service_layout;
 import static car.com.wlc.cardemo.R.id.carfriend_chat;
 
 
@@ -64,7 +70,7 @@ import static car.com.wlc.cardemo.R.id.carfriend_chat;
  * wlx {@link Fragment} subclass.
  */
 
-public class HomeFragment extends Fragment implements  AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
+public class HomeFragment extends Fragment implements AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
     private static HomeFragment homeFragment;
@@ -171,10 +177,10 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     }
 
 
-
     private void inintView(View view) {
 
-        view.findViewById(car_service_layout).setOnClickListener(this);
+
+        view.findViewById(R.id.car_service_layout).setOnClickListener(this);
         view.findViewById(R.id.carfriend_chat).setOnClickListener(this);
         view.findViewById(R.id.day_carstatu).setOnClickListener(this);
         mCityText = ((TextView) view.findViewById(R.id.location_text));
@@ -198,7 +204,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
         view.findViewById(R.id.btn_scan).setOnClickListener(this);
         initBanner();
 
+       
     }
+
 
     /**
      * 轮播图
@@ -253,7 +261,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.day_price:
             case R.id.day_run:
-               startActivity(new Intent(getContext(),CarGridActivity.class));
+                startActivity(new Intent(getContext(), CarGridActivity.class));
                 break;
             case carfriend_chat:
                 startActivity(new Intent(getActivity(), ChatActivity.class));
@@ -475,9 +483,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     public void onLocationChanged(AMapLocation aMapLocation) {
 
         String city = aMapLocation.getCity();
-       if (city != null){
-           mCityText.setText(city);
-       }
+        if (city != null) {
+            mCityText.setText(city);
+        }
     }
 
 }
