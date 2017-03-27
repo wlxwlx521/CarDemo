@@ -33,6 +33,8 @@ import java.util.List;
 import java.util.Set;
 
 import car.com.wlc.cardemo.R;
+import car.com.wlc.cardemo.activity.CarGridActivity;
+import car.com.wlc.cardemo.activity.CarShopActivity;
 import car.com.wlc.cardemo.activity.LoginActivity;
 import car.com.wlc.cardemo.activity.ShopActivity;
 import car.com.wlc.cardemo.adapter.CityAdapter;
@@ -247,11 +249,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.day_price:
             case R.id.day_run:
-                if (userInfo.isStatus()) {
-
-                } else {
-                    showLoadDialog();
-                }
+               startActivity(new Intent(getContext(),CarGridActivity.class));
                 break;
             case carfriend_chat:
                 startActivity(new Intent(getActivity(), ChatActivity.class));
