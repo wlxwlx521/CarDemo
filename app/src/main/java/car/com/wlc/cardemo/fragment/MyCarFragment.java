@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +29,6 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
-import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
@@ -52,7 +49,6 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import car.com.wlc.cardemo.R;
 import car.com.wlc.cardemo.activity.LoginActivity;
@@ -66,9 +62,6 @@ import car.com.wlc.cardemo.utils.DatabaseOpenHelper;
 import car.com.wlc.cardemo.utils.IsNetwork;
 import car.com.wlc.cardemo.utils.JsonData;
 import car.com.wlc.cardemo.utils.SharedData;
-import car.com.wlc.cardemo.utils.ToastUtil;
-
-import static java.lang.Integer.getInteger;
 
 
 /**
@@ -213,19 +206,37 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
                     // 设置当前地图显示为当前位置
                     if (latitude != null && longitude != null) {
                         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 19));
+
+
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
                         Marker marker = mapScreenMarkers.get(1);
                         marker.setVisible(true);
+
                     }
                 } else {
                     //定位人
+                    if (platitude != 0 && plongitude != 0) {
 
-                    List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
-                    Marker marker = mapScreenMarkers.get(1);
-                    marker.setVisible(false);
-                    aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
+                        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(platitude, plongitude), 19));
 
 
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        List<Marker> mapScreenMarkers = aMap.getMapScreenMarkers();
+
+                        Log.e("lyf", "onCheckedChanged: " + mapScreenMarkers);
+                        Marker marker = mapScreenMarkers.get(1);
+                        marker.setVisible(false);
+                    }
                 }
             }
         });
@@ -336,7 +347,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
                                     latitude = Double.valueOf(ver.getLatitude());
 
-                                     markerOptions = new MarkerOptions();
+                                    markerOptions = new MarkerOptions();
                                     markerOptions.position(new LatLng(latitude, longitude));
                                     markerOptions.title("车");
                                     markerOptions.visible(true);

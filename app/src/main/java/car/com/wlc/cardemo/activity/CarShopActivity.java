@@ -51,7 +51,7 @@ public class CarShopActivity extends AppCompatActivity {
     private void initImData() {
         imlist = new ArrayList<BannerItem>();
         for (int i = 0; i < 4; i++) {
-            BannerItem bannerItem = new BannerItem(i+1+"" , R.mipmap.banners);
+            BannerItem bannerItem = new BannerItem(i + 1 + "", R.mipmap.banners);
             imlist.add(bannerItem);
 
         }
@@ -92,7 +92,7 @@ public class CarShopActivity extends AppCompatActivity {
         list1.add("汽车保险");
         list1.add("更多服务");
 
-        GridAdapter gridAdapter = new GridAdapter(this,list,list1);
+        GridAdapter gridAdapter = new GridAdapter(this, list, list1);
         mGridView.setAdapter(gridAdapter);
 
 
@@ -122,6 +122,7 @@ public class CarShopActivity extends AppCompatActivity {
         //开始自动翻页
         mBanner.startTurning(3000);
     }
+
     // 停止自动翻页
     @Override
     public void onPause() {
@@ -129,6 +130,7 @@ public class CarShopActivity extends AppCompatActivity {
         //停止翻页
         mBanner.stopTurning();
     }
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
