@@ -176,6 +176,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
         view.findViewById(R.id.carfriend_chat).setOnClickListener(this);
         view.findViewById(R.id.day_carstatu).setOnClickListener(this);
+        view.findViewById(R.id.car_service_layout).setOnClickListener(this);
         mCityText = ((TextView) view.findViewById(R.id.location_text));
         mCityText.setOnClickListener(this);
         mBanner = ((ConvenientBanner) view.findViewById(R.id.home_banner));
@@ -256,6 +257,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.location_text:
                 showDialogCity();
+                break;
+            case R.id.car_service_layout:
+                startActivity(new Intent(getContext(),CarShopActivity.class));
                 break;
 
 
