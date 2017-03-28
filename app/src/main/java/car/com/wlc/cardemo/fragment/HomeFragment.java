@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,8 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+
+
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
@@ -40,6 +44,8 @@ import car.com.wlc.cardemo.activity.ShopActivity;
 import car.com.wlc.cardemo.adapter.CityAdapter;
 import car.com.wlc.cardemo.chatmessage.car.VehicleConditionActivity;
 import car.com.wlc.cardemo.chatmessage.chat.ui.ChatActivity;
+import car.com.wlc.cardemo.floatdrag.AnimationUtil;
+import car.com.wlc.cardemo.floatdrag.FloatingDraftButton;
 import car.com.wlc.cardemo.javaBean.BannerItem;
 import car.com.wlc.cardemo.javaBean.CityBean;
 import car.com.wlc.cardemo.javaBean.Contact;
@@ -55,7 +61,6 @@ import car.com.wlc.cardemo.view.WaveView;
 import car.com.wlc.cardemo.view.cityview.MySlideView;
 import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
 
-import static android.content.ContentValues.TAG;
 import static car.com.wlc.cardemo.R.id.carfriend_chat;
 
 
@@ -82,6 +87,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     private LinearLayoutManager layoutManager;
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
+    private FloatingDraftButton floatingDraftButton;
+    private FloatingActionButton button1;
+    private FloatingActionButton button2;
 
 
     public static HomeFragment getInstance() {
@@ -151,7 +159,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
 
     private void requestLocationPermission() {
-        Log.e(TAG, "requestLocationPermission: " + "申请授权");
+        Log.e("TAG", "requestLocationPermission: " + "申请授权");
 
         MPermissions.requestPermissions(this, 5, Manifest.permission.ACCESS_COARSE_LOCATION);
 
@@ -173,7 +181,12 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
     private void inintView(View view) {
 
-
+        floatingDraftButton = ((FloatingDraftButton) view.findViewById(R.id.floatingActionButton));
+        floatingDraftButton.setOnClickListener(this);
+        button1 = ((FloatingActionButton) view.findViewById(R.id.floatingActionButton_liveness));
+        button2 = ((FloatingActionButton) view.findViewById(R.id.floatingActionButton_2));
+        floatingDraftButton.registerButton(button1);
+        floatingDraftButton.registerButton(button2);
         view.findViewById(R.id.carfriend_chat).setOnClickListener(this);
         view.findViewById(R.id.day_carstatu).setOnClickListener(this);
         view.findViewById(R.id.car_service_layout).setOnClickListener(this);
@@ -260,6 +273,11 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.car_service_layout:
                 startActivity(new Intent(getContext(),CarShopActivity.class));
+                break;
+            case R.id.floatingActionButton:
+                //弹出动态Button
+                AnimationUtil.slideButtons(getContext(),floatingDraftButton);
+
                 break;
 
 
