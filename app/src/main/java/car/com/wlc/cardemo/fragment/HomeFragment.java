@@ -13,10 +13,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -26,6 +28,7 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.zhy.m.permission.MPermissions;
 import com.zhy.m.permission.PermissionDenied;
 import com.zhy.m.permission.PermissionGrant;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -57,13 +60,14 @@ import car.com.wlc.cardemo.zxing.activity.CaptureActivity;
 
 import static android.content.ContentValues.TAG;
 import static car.com.wlc.cardemo.R.id.carfriend_chat;
+import static com.amap.api.mapcore.util.af.a.l;
 
 
 /**
  * wlx {@link Fragment} subclass.
  */
 
-public class HomeFragment extends Fragment implements  AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
+public class HomeFragment extends Fragment implements AMapLocationListener, View.OnClickListener, MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
     private static HomeFragment homeFragment;
@@ -170,7 +174,6 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     }
 
 
-
     private void inintView(View view) {
 
 
@@ -249,7 +252,7 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.day_price:
             case R.id.day_run:
-               startActivity(new Intent(getContext(),CarGridActivity.class));
+                startActivity(new Intent(getContext(), CarGridActivity.class));
                 break;
             case carfriend_chat:
                 startActivity(new Intent(getActivity(), ChatActivity.class));
@@ -468,9 +471,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     public void onLocationChanged(AMapLocation aMapLocation) {
 
         String city = aMapLocation.getCity();
-       if (city != null){
-           mCityText.setText(city);
-       }
+        if (city != null) {
+            mCityText.setText(city);
+        }
     }
 
 }
