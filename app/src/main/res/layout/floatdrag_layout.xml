@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <car.com.wlc.cardemo.floatdrag.FloatingDraftButton
+        android:id="@+id/floatingActionButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:rippleColor="@color/btnFalseColor"
+        android:src="@mipmap/sos"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@android:color/white"
+        android:layout_centerVertical="true"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
+        app:pressedTranslationZ="12dp"
+        app:fabSize="mini"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton_liveness"
+        android:backgroundTint="@color/needle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:fab_title="一键救援"
+
+       android:src="@mipmap/cxz_sos_help"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
+        app:pressedTranslationZ="12dp"
+        app:fabSize="mini"
+        android:visibility="invisible"
+        />
+    <android.support.design.widget.FloatingActionButton
+        android:backgroundTint="@color/needle"
+        android:id="@+id/floatingActionButton_2"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:fab_title="在线报险"
+        android:src="@mipmap/cxz_sos_safety"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        app:elevation="6dp"
+        app:borderWidth="0dp"
+        app:pressedTranslationZ="12dp"
+        app:fabSize="mini"
+        android:visibility="invisible"
+        />
+
+</RelativeLayout>
