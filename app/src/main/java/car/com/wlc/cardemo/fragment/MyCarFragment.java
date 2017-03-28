@@ -224,6 +224,7 @@ public class MyCarFragment extends Fragment implements LocationSource, AMapLocat
 
 
 
+
                     }
                 } else {
                     //定位人
