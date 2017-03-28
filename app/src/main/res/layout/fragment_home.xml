@@ -520,5 +520,4 @@
         </ScrollView>
     </LinearLayout>
     <include layout="@layout/floatdrag_layout"/>
-    
 </FrameLayout>

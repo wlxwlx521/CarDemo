@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -13,19 +12,19 @@ import android.widget.TextView;
 import car.com.wlc.cardemo.R;
 
 
-public class AddFriendActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddFriendActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mSearchMessage;
-    private Handler handler=new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what==1){
+            if (msg.what == 1) {
                 mSearchMessage.setText("您查询的用户不在服务区");
             }
         }
     };
     private RadioGroup mGroup;
-    private RadioButton mBtnName,mBtnUserC;
+    private RadioButton mBtnName, mBtnUserC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,7 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
-      findViewById(R.id.search_people).setOnClickListener(this);
+        findViewById(R.id.search_people).setOnClickListener(this);
         mSearchMessage = ((TextView) findViewById(R.id.text_search_message));
         mGroup = ((RadioGroup) findViewById(R.id.btn_gruop));
         mBtnName = ((RadioButton) mGroup.findViewById(R.id.btn_username));
@@ -46,11 +45,11 @@ public class AddFriendActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.search_people :
+        switch (v.getId()) {
+            case R.id.search_people:
                 mSearchMessage.setText("正在为你查询....");
                 mSearchMessage.setVisibility(View.VISIBLE);
-                handler.sendEmptyMessageDelayed(1,1000);
+                handler.sendEmptyMessageDelayed(1, 1000);
                 break;
         }
     }
