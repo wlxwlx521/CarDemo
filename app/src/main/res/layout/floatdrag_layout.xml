@@ -19,7 +19,7 @@
         app:pressedTranslationZ="12dp"
         app:fabSize="mini"
         />
-    
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton_liveness"
         android:backgroundTint="@color/needle"
