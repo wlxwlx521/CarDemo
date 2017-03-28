@@ -3,139 +3,41 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1eded">
+    android:background="#f1eded"
+    >
 
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="end"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:gravity="center">-->
+    <!--<com.getbase.floatingactionbutton.FloatingActionsMenu-->
+        <!--android:id="@+id/fab_menu"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|right"-->
+        <!--android:layout_margin="16dp"-->
+        <!--app:fab_labelStyle="@style/menu_labels_style"-->
+        <!--fab:fab_addButtonColorNormal="@color/white"-->
+        <!--fab:fab_addButtonColorPressed="@color/white_pressed"-->
+        <!--fab:fab_addButtonPlusIconColor="@color/half_black"-->
+        <!--fab:fab_addButtonSize="normal"-->
+        <!--fab:fab_labelsPosition="left">-->
 
-    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
-    <!--android:id="@+id/drawer"-->
+        <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:fab_icon="@mipmap/cxz_sos_help"-->
+            <!--app:fab_title="一键救援"-->
+            <!--fab:fab_colorNormal="@color/white"-->
+            <!--fab:fab_colorPressed="@color/white_pressed"-->
+            <!--fab:fab_size="mini" />-->
 
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--my:content="@+id/content"-->
-    <!--my:direction="topToBottom"-->
-    <!--my:handle="@+id/handle">-->
-
-    <!--<RelativeLayout-->
-    <!--android:id="@id/content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="100dp"-->
-    <!--android:background="@mipmap/juchi"-->
-    <!--android:gravity="center">-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
-    <!--android:gravity="center"-->
-    <!--android:text="一键救援" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
-    <!--android:gravity="center"-->
-    <!--android:text="在线报险" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<ImageView-->
-    <!--android:id="@id/handle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@mipmap/sos"-->
-
-    <!--android:translationX="160dp" />-->
-    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
-    <!--</LinearLayout><LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="end"-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:gravity="center">-->
-
-    <!--<car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer xmlns:my="http://schemas.android.com/apk/res/car.com.wlc.cardemo"-->
-    <!--android:id="@+id/drawer"-->
-
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--my:content="@+id/content"-->
-    <!--my:direction="topToBottom"-->
-    <!--my:handle="@+id/handle">-->
-
-    <!--<RelativeLayout-->
-    <!--android:id="@id/content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="100dp"-->
-    <!--android:background="@mipmap/juchi"-->
-    <!--android:gravity="center">-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_help"-->
-    <!--android:gravity="center"-->
-    <!--android:text="一键救援" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_margin="10dp"-->
-    <!--android:drawableLeft="@mipmap/cxz_sos_safety"-->
-    <!--android:gravity="center"-->
-    <!--android:text="在线报险" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<ImageView-->
-    <!--android:id="@id/handle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@mipmap/sos"-->
-
-    <!--android:translationX="160dp" />-->
-    <!--</car.com.wlc.cardemo.view.MultiDirectionSlidingDrawer>-->
-    <!--</LinearLayout>-->
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        app:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_addButtonColorNormal="@color/white"
-        fab:fab_addButtonColorPressed="@color/white_pressed"
-        fab:fab_addButtonPlusIconColor="@color/half_black"
-        fab:fab_addButtonSize="normal"
-        fab:fab_labelsPosition="left">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@mipmap/cxz_sos_help"
-            app:fab_title="一键救援"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/white_pressed"
-            fab:fab_size="mini" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@mipmap/cxz_sos_safety"
-            app:fab_title="在线报险"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/white_pressed"
-            fab:fab_size="mini" />
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:fab_icon="@mipmap/cxz_sos_safety"-->
+            <!--app:fab_title="在线报险"-->
+            <!--fab:fab_colorNormal="@color/white"-->
+            <!--fab:fab_colorPressed="@color/white_pressed"-->
+            <!--fab:fab_size="mini" />-->
+    <!--</com.getbase.floatingactionbutton.FloatingActionsMenu>-->
 
     <LinearLayout
         android:id="@+id/bootom_lin"
@@ -612,7 +514,10 @@
                         android:gravity="center"
                         android:text="消息提醒" />
                 </LinearLayout>
+
             </LinearLayout>
+
         </ScrollView>
     </LinearLayout>
+    <include layout="@layout/floatdrag_layout"/>
 </FrameLayout>
