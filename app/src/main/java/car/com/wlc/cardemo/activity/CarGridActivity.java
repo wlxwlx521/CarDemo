@@ -24,9 +24,7 @@ public class CarGridActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        url = "https://wj.qq.com/edit.html?tid=49";
-
-
+        url = intent.getStringExtra("url");
         initView();
 
 

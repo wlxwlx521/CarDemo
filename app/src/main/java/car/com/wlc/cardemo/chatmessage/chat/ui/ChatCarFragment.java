@@ -43,7 +43,7 @@ import static android.R.id.list;
  * Created by Administrator on 2017/3/18.
  */
 
-public class ChatCarFragment extends Fragment implements AMapLocationListener,LocationSource,AMap.OnMarkerClickListener{
+public class ChatCarFragment extends Fragment implements AMapLocationListener,LocationSource,AMap.OnInfoWindowClickListener{
     private View view;
     private MapView mapView;
     private AMap aMap;
@@ -102,6 +102,7 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
         aMap.setMyLocationStyle(style);//设置定位蓝点的Style
 //
         setfromandtoMarker();
+        aMap.setOnInfoWindowClickListener(this);
 
     }
     private void setfromandtoMarker() {
@@ -189,11 +190,16 @@ public class ChatCarFragment extends Fragment implements AMapLocationListener,Lo
         deactivate();
     }
 
+//    @Override
+//    public boolean onMarkerClick(Marker marker) {
+//
+//        return false;
+//    }
+
     @Override
-    public boolean onMarkerClick(Marker marker) {
+    public void onInfoWindowClick(Marker marker) {
         Intent intent = new Intent(getContext(), MessengerActivity.class);
         intent.putExtra("user",new User(0,"车马炮",R.mipmap.usercenter_demo_headimage));
         startActivity(new Intent(getContext(),MessengerActivity.class));
-        return false;
     }
 }

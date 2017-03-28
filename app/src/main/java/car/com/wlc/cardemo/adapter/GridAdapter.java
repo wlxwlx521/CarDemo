@@ -78,9 +78,9 @@ public class GridAdapter extends BaseAdapter{
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String string = strings[position];
+                String url = strings[position];
                 Intent intent = new Intent(mContext, CarGridActivity.class);
-                intent.putExtra("url",string);
+                intent.putExtra("url",url);
 
                 mContext.startActivity(intent);
             }

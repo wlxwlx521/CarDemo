@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,6 +41,8 @@ import car.com.wlc.cardemo.activity.ShopActivity;
 import car.com.wlc.cardemo.adapter.CityAdapter;
 import car.com.wlc.cardemo.chatmessage.car.VehicleConditionActivity;
 import car.com.wlc.cardemo.chatmessage.chat.ui.ChatActivity;
+import car.com.wlc.cardemo.floatdrag.AnimationUtil;
+import car.com.wlc.cardemo.floatdrag.FloatingDraftButton;
 import car.com.wlc.cardemo.javaBean.BannerItem;
 import car.com.wlc.cardemo.javaBean.CityBean;
 import car.com.wlc.cardemo.javaBean.Contact;
@@ -82,6 +85,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
     private LinearLayoutManager layoutManager;
     private AMapLocationClient mlocationClient;
     private AMapLocationClientOption mLocationOption;
+    private FloatingDraftButton floatingDraftButton;
+    private FloatingActionButton floatingActionButton1;
+    private FloatingActionButton floatingActionButton2;
 
 
     public static HomeFragment getInstance() {
@@ -173,7 +179,12 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
 
     private void inintView(View view) {
 
-
+        floatingDraftButton = ((FloatingDraftButton) view.findViewById(R.id.floatingActionButton));
+        floatingDraftButton.setOnClickListener(this);
+        floatingActionButton1 = ((FloatingActionButton) view.findViewById(R.id.floatingActionButton_liveness));
+        floatingActionButton2 = ((FloatingActionButton) view.findViewById(R.id.floatingActionButton_2));
+        floatingDraftButton.registerButton(floatingActionButton1);
+        floatingDraftButton.registerButton(floatingActionButton2);
         view.findViewById(R.id.carfriend_chat).setOnClickListener(this);
         view.findViewById(R.id.day_carstatu).setOnClickListener(this);
         view.findViewById(R.id.car_service_layout).setOnClickListener(this);
@@ -260,6 +271,9 @@ public class HomeFragment extends Fragment implements  AMapLocationListener, Vie
                 break;
             case R.id.car_service_layout:
                 startActivity(new Intent(getContext(),CarShopActivity.class));
+                break;
+            case R.id.floatingActionButton:
+                AnimationUtil.slideButtons(getContext(),floatingDraftButton);
                 break;
 
 
